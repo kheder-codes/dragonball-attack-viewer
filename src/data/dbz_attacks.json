@@ -1,0 +1,49 @@
+{
+    "gokuFightsDBZ": [
+      {
+        "saga": "Saiyan Saga",
+        "opponentName": "Vegeta",
+        "opponentImageSource": "/images/opponents/vegeta.png",
+        "attacks": [
+          {
+            "attackName": "Kaioken x3 Kamehameha",
+            "attackImageSource": "/images/attacks/kaioken_kamehameha.png"
+          },
+          {
+            "attackName": "Spirit Bomb (Genkidama)",
+            "attackImageSource": "/images/attacks/spirit_bomb.png"
+          }
+        ]
+      },
+      {
+        "saga": "Frieza Saga",
+        "opponentName": "Frieza",
+        "opponentImageSource": "/images/opponents/frieza.png",
+        "attacks": [
+          {
+            "attackName": "Super Saiyan Transformation",
+            "attackImageSource": "/images/attacks/ssj_transform.png"
+          },
+          {
+            "attackName": "Angry Kamehameha",
+            "attackImageSource": "/images/attacks/angry_kamehameha.png"
+          }
+        ]
+      },
+      {
+        "saga": "Cell Saga",
+        "opponentName": "Perfect Cell",
+        "opponentImageSource": "/images/opponents/cell.png",
+        "attacks": [
+          {
+            "attackName": "Instant Transmission Kamehameha",
+            "attackImageSource": "/images/attacks/instant_kamehameha.png"
+          },
+          {
+            "attackName": "Father-Son Kamehameha (Assist)",
+            "attackImageSource": "/images/attacks/father_son_kamehameha.png"
+          }
+        ]
+      }
+    ]
+  }
