@@ -1,49 +1,339 @@
 {
-    "gokuFightsDBZ": [
-      {
-        "saga": "Saiyan Saga",
-        "opponentName": "Vegeta",
-        "opponentImageSource": "/images/opponents/vegeta.png",
-        "attacks": [
-          {
-            "attackName": "Kaioken x3 Kamehameha",
-            "attackImageSource": "/images/attacks/kaioken_kamehameha.png"
-          },
-          {
-            "attackName": "Spirit Bomb (Genkidama)",
-            "attackImageSource": "/images/attacks/spirit_bomb.png"
-          }
-        ]
-      },
-      {
-        "saga": "Frieza Saga",
-        "opponentName": "Frieza",
-        "opponentImageSource": "/images/opponents/frieza.png",
-        "attacks": [
-          {
-            "attackName": "Super Saiyan Transformation",
-            "attackImageSource": "/images/attacks/ssj_transform.png"
-          },
-          {
-            "attackName": "Angry Kamehameha",
-            "attackImageSource": "/images/attacks/angry_kamehameha.png"
-          }
-        ]
-      },
-      {
-        "saga": "Cell Saga",
-        "opponentName": "Perfect Cell",
-        "opponentImageSource": "/images/opponents/cell.png",
-        "attacks": [
-          {
-            "attackName": "Instant Transmission Kamehameha",
-            "attackImageSource": "/images/attacks/instant_kamehameha.png"
-          },
-          {
-            "attackName": "Father-Son Kamehameha (Assist)",
-            "attackImageSource": "/images/attacks/father_son_kamehameha.png"
-          }
-        ]
-      }
-    ]
-  }
+  "gokuFightsDBZ": [
+    {
+      "saga": "Saiyajin-Saga",
+      "opponentName": "Radditz",
+      "opponentImageSource": "opponents/radditz.jpg",
+      "attacks": [
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        },
+        {
+          "attackName": "Klammergriff (Full-Nelson)",
+          "attackImageSource": "attacks/klammergriff-full-nelson.png"
+        }
+      ]
+    },
+    {
+      "saga": "Saiyajin-Saga",
+      "opponentName": "Nappa",
+      "opponentImageSource": "opponents/nappa.jpg",
+      "attacks": [
+        {
+          "attackName": "Kaioken",
+          "attackImageSource": "attacks/kaioken.png"
+        },
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Saiyajin-Saga",
+      "opponentName": "Vegeta (Saiyajin-Saga)",
+      "opponentImageSource": "opponents/vegeta-saiyajin-saga.jpg",
+      "attacks": [
+        {
+          "attackName": "Kaioken (bis zu x4)",
+          "attackImageSource": "attacks/kaioken-x4.png"
+        },
+        {
+          "attackName": "Kamehameha (inkl. Kaioken Kamehameha)",
+          "attackImageSource": "attacks/kaioken-kamehameha.png"
+        },
+        {
+          "attackName": "Genkidama (initiiert, nicht geworfen)",
+          "attackImageSource": "attacks/genkidama.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Freezer-Saga",
+      "opponentName": "Recoome",
+      "opponentImageSource": "opponents/recoome.jpg",
+      "attacks": [
+        {
+          "attackName": "Ellenbogenschlag (entscheidend)",
+          "attackImageSource": "attacks/ellenbogenschlag.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Freezer-Saga",
+      "opponentName": "Burter & Jeice",
+      "opponentImageSource": "opponents/burter-jeice.jpg",
+      "attacks": [
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Ki-Stöße (Abwehr)",
+          "attackImageSource": "attacks/ki-stoesse.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Freezer-Saga",
+      "opponentName": "Captain Ginyu",
+      "opponentImageSource": "opponents/captain-ginyu.jpg",
+      "attacks": [
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Kamehameha (zur Demonstration)",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+         {
+          "attackName": "Kaioken (angedeutet/kurz genutzt)",
+          "attackImageSource": "attacks/kaioken.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Freezer-Saga",
+      "opponentName": "Freezer",
+      "opponentImageSource": "opponents/freezer.jpg",
+      "attacks": [
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+        {
+          "attackName": "Kaioken (bis zu x20)",
+          "attackImageSource": "attacks/kaioken-x20.png"
+        },
+        {
+          "attackName": "Genkidama (Groß)",
+          "attackImageSource": "attacks/genkidama-gross.png"
+        },
+        {
+          "attackName": "Super-Saiyajin Transformation",
+          "attackImageSource": "attacks/super-saiyajin-transformation.png"
+        },
+        {
+          "attackName": "Wütendes Kamehameha",
+          "attackImageSource": "attacks/wuetendes-kamehameha.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Ki-Stöße",
+          "attackImageSource": "attacks/ki-stoesse.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Cell-Saga",
+      "opponentName": "Android 19",
+      "opponentImageSource": "opponents/android-19.jpg",
+      "attacks": [
+        {
+          "attackName": "Super-Saiyajin Transformation",
+          "attackImageSource": "attacks/super-saiyajin-transformation.png"
+        },
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf (durch Herzkrankheit beeinträchtigt)",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Cell-Saga",
+      "opponentName": "Cell (Perfekte Form)",
+      "opponentImageSource": "opponents/cell-perfekt.jpg",
+      "attacks": [
+        {
+          "attackName": "Super-Saiyajin Transformation (inkl. Full Power/Grade 4)",
+          "attackImageSource": "attacks/super-saiyajin-full-power.png"
+        },
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+        {
+          "attackName": "Momentane Teleportation (Shunkanido)",
+          "attackImageSource": "attacks/momentane-teleportation-shunkanido.png"
+        },
+        {
+          "attackName": "Momentane Teleportation Kamehameha",
+          "attackImageSource": "attacks/momentane-teleportation-kamehameha.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Ki-Stöße",
+          "attackImageSource": "attacks/ki-stoesse.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Buu-Saga",
+      "opponentName": "Yakon",
+      "opponentImageSource": "opponents/yakon.jpg",
+      "attacks": [
+        {
+          "attackName": "Super-Saiyajin Transformation (kurzer Ausbruch zur Überladung)",
+          "attackImageSource": "attacks/super-saiyajin-transformation.png"
+        },
+        {
+          "attackName": "Ki-Ausbruch (Flare)",
+          "attackImageSource": "attacks/ki-ausbruch.png"
+        }
+      ]
+    },
+    {
+      "saga": "Buu-Saga",
+      "opponentName": "Majin Vegeta",
+      "opponentImageSource": "opponents/majin-vegeta.jpg",
+      "attacks": [
+        {
+          "attackName": "Super-Saiyajin 2 Transformation",
+          "attackImageSource": "attacks/super-saiyajin-2-transformation.png"
+        },
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Ki-Stöße",
+          "attackImageSource": "attacks/ki-stoesse.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Buu-Saga",
+      "opponentName": "Majin Buu (Fett)",
+      "opponentImageSource": "opponents/majin-buu-fett.jpg",
+      "attacks": [
+        {
+          "attackName": "Super-Saiyajin 3 Transformation",
+          "attackImageSource": "attacks/super-saiyajin-3-transformation.png"
+        },
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Ki-Stöße",
+          "attackImageSource": "attacks/ki-stoesse.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    },
+    {
+      "saga": "Buu-Saga",
+      "opponentName": "Kid Buu",
+      "opponentImageSource": "opponents/kid-buu.jpg",
+      "attacks": [
+        {
+          "attackName": "Super-Saiyajin 3 Transformation",
+          "attackImageSource": "attacks/super-saiyajin-3-transformation.png"
+        },
+        {
+          "attackName": "Kamehameha",
+          "attackImageSource": "attacks/kamehameha.png"
+        },
+         {
+          "attackName": "Super Genkidama / Universum Genkidama",
+          "attackImageSource": "attacks/super-genkidama.png"
+        },
+        {
+          "attackName": "Hochgeschwindigkeitskampf",
+          "attackImageSource": "attacks/hochgeschwindigkeitskampf.png"
+        },
+        {
+          "attackName": "Momentane Teleportation (Shunkanido)",
+          "attackImageSource": "attacks/momentane-teleportation-shunkanido.png"
+        },
+        {
+          "attackName": "Ki-Stöße",
+          "attackImageSource": "attacks/ki-stoesse.png"
+        },
+         {
+          "attackName": "Biss",
+          "attackImageSource": "attacks/biss.png"
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png"
+        }
+      ]
+    }
+  ]
+}
