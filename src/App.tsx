@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 
 // Importiere unsere Typen aus Issue #2
@@ -11,6 +11,7 @@ import gokuFightsRawData from './data/dbz_attacks.json';
 // Importiere unsere Transformationsfunktion aus Issue #3
 import { transformFightData } from './utils/dataTransformer';
 import AttackList from './components/AttackList';
+import AttackDetail from './components/AttackDetail';
 
 // Importiere Komponenten (werden später verwendet, können jetzt schon rein)
 // import AttackList from './components/AttackList';
@@ -18,13 +19,13 @@ import AttackList from './components/AttackList';
 // import AttackDetail from './components/AttackDetail';
 
 function App() {
-  // State, um die ursprüngliche, transformierte (flache) Liste aller Attacken zu halten
-  // Initial leer, bis die Daten geladen sind. Der Typ ist AttackItemData[]
   const [originalAttacks, setOriginalAttacks] = useState<AttackItemData[]>([]);
-
-  // State für den Ladezustand (optional, aber gute Praxis)
-  // Initial auf true gesetzt, da wir am Anfang laden
   const [loading, setLoading] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [selectedSaga, setSelectedSaga] = useState<string>('');
+
+  // **Neu**: State für die ausgewählte Attacke
+  const [selectedAttack, setSelectedAttack] = useState<AttackItemData | null>(null);
 
   // --- Daten Laden und Transformieren ---
   // Dieser useEffect wird einmal beim Mounten der Komponente ausgeführt
@@ -54,27 +55,63 @@ function App() {
     }
   }, []); // Leeres Abhängigkeits-Array: Führt den Effekt nur einmal nach dem ersten Rendern aus!
 
-  // --- Render-Logik ---
+  const uniqueSagas = useMemo(() => {
+    // ... berechne einmalig ...
+  }, [originalAttacks]);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+  const handleSagaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSaga(e.target.value);
+  };
+
+  // **Neu**: Handler zum Selektieren
+  const handleAttackSelect = (attack: AttackItemData) => {
+    console.log('Attack selected in App:', attack);
+    setSelectedAttack(attack);
+  };
+
+  // (später für AttackDetail)
+  const handleGoBack = () => {
+    setSelectedAttack(null);
+  };
+
+  const displayedAttacks = useMemo(() => {
+    // ... Filter-Logik ...
+  }, [originalAttacks, searchTerm, selectedSaga]);
 
   // Wenn noch geladen wird, zeige eine Ladeanzeige
   if (loading) {
     return <div className="App"><p>Loading data...</p></div>;
   }
 
-  // Wenn nicht mehr geladen wird, zeige den Hauptinhalt
   return (
     <div className="App">
       <h1>Dragon Ball Attack Viewer</h1>
-      {/* Zeige an, wie viele Einträge geladen wurden */}
-      <p>Loaded {originalAttacks.length} attack entries.</p>
-    <AttackList attacks={originalAttacks} onAttackSelect={(attack) => console.log('selected attack: ', attack)}></AttackList>
+      {/* <SearchFilterControls
+        searchTerm={searchTerm}
+        selectedSaga={selectedSaga}
+        uniqueSagas={uniqueSagas}
+        onSearchChange={handleSearchChange}
+        onSagaChange={handleSagaChange}
+      /> */}
 
-      {/* Hier werden später die anderen Komponenten eingefügt */}
-      {/* <SearchFilterControls /> */}
-      {/* <AttackList attacks={originalAttacks} /> */}
-      {/* <AttackDetail /> */}
+      {/* Hier geben wir den neuen Prop onAttackSelect weiter */}
+      <AttackList
+        attacks={originalAttacks}
+        onAttackSelect={handleAttackSelect}
+      />
+
+      {/* Optional: Detail-View */}
+      {selectedAttack && (
+        <AttackDetail
+          selectedAttack={selectedAttack}
+          onGoBack={handleGoBack}
+        />
+      )}
     </div>
   );
-} // Ende der App-Funktion
+}
 
-export default App; // Exportiere die Komponente
+export default App;
