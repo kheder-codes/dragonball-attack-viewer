@@ -135,11 +135,13 @@ function App() {
         onSagaChange={handleSagaChange}
       />
 
+      {/* === HIER IST DER WICHTIGE PUNKT FÜR ISSUE #13 === */}
       {/* Die AttackList erhält die gefilterten Angriffe */}
       <AttackList
-        attacks={displayedAttacks}
+        attacks={displayedAttacks}  // <-- Bestätigen, dass hier displayedAttacks steht
         onAttackSelect={handleAttackSelect}
       />
+      {/* ================================================ */}
 
       {/* Temporäre Anzeige für selectedAttack (kann bleiben oder später durch AttackDetail ersetzt werden) */}
       {selectedAttack && (
