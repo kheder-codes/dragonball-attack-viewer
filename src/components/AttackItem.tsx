@@ -79,7 +79,7 @@ const AttackItem: React.FC<AttackItemProps> = ({ attackData, onAttackSelect }) =
 
       {/* Bilder */}
       {/* Annahme: attackImageSource & opponentImageSource sind Teil von AttackItemData */}
-      <div style={imageContainerStyle}>
+      {/* <div style={imageContainerStyle}>
         {attackData.attackImageSource && (
           <img
             src={attackImagePath}
@@ -98,7 +98,7 @@ const AttackItem: React.FC<AttackItemProps> = ({ attackData, onAttackSelect }) =
             loading="lazy" // Lazy Loading für bessere Performance
           />
         )}
-      </div>
+      </div> */}
     </li>
   );
 };
