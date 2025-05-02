@@ -13,14 +13,12 @@ import { transformFightData } from './utils/dataTransformer';
 
 // Importiere Komponenten
 import AttackList from './components/AttackList';
+import AttackDetail from './components/AttackDetail';
 import SearchFilterControls from './components/SearchFilterControls';
 // import AttackDetail from './components/AttackDetail'; // Wird später importiert
 
 function App() {
-  // State, um die ursprüngliche, transformierte (flache) Liste aller Attacken zu halten
   const [originalAttacks, setOriginalAttacks] = useState<AttackItemData[]>([]);
-
-  // State für den Ladezustand
   const [loading, setLoading] = useState<boolean>(true);
 
   // State für den aktuell ausgewählten Angriff (für Detailansicht später)
@@ -83,7 +81,7 @@ function App() {
   // --- Combined Filtering Logic using useMemo (Refined for Issue #12) ---
   const displayedAttacks = useMemo(() => {
     // Optional: Loggen, wann die Filterung tatsächlich ausgeführt wird (für Performance-Checks)
-    console.log(`Filtering attacks based on Saga: '<span class="math-inline">\{selectedSaga \|\| 'None'\}', Search\: '</span>{searchTerm || 'None'}'`);
+    console.log(`Filtering attacks based on Saga: '${selectedSaga || 'None'}', Search: '${searchTerm || 'None'}'`);
 
     let filtered = originalAttacks; // Starte mit allen Angriffen
 
@@ -121,7 +119,6 @@ function App() {
     return <div className="App"><p>Loading data...</p></div>;
   }
 
-  // Wenn nicht mehr geladen wird, zeige den Hauptinhalt
   return (
     <div className="App">
       <h1>Dragon Ball Attack Viewer</h1>
@@ -143,19 +140,15 @@ function App() {
       />
       {/* ================================================ */}
 
-      {/* Temporäre Anzeige für selectedAttack (kann bleiben oder später durch AttackDetail ersetzt werden) */}
       {selectedAttack && (
-          <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px', background: '#eee', padding: '1rem' }}>
-             <h2>Selected Attack (Debug):</h2>
-             <p>Name: {selectedAttack.attackName}</p>
-             <p>Opponent: {selectedAttack.opponentName}</p>
-             <p>Saga: {selectedAttack.saga}</p>
-             <button onClick={handleGoBack}>Clear Selection</button>
-          </div>
+        <AttackDetail
+          selectedAttack={selectedAttack}
+          onGoBack={handleGoBack}
+        />
       )}
 
     </div>
   );
-} // Ende der App-Funktion
+}
 
-export default App; // Exportiere die Komponente
+export default App;

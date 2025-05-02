@@ -79,6 +79,7 @@ const AttackItem: React.FC<AttackItemProps> = ({ attackData, onAttackSelect }) =
 
       {/* Bilder */}
       {/* Annahme: attackImageSource & opponentImageSource sind Teil von AttackItemData */}
+      {
       <div style={imageContainerStyle}>
         {attackData.attackImageSource && (
           <img
@@ -99,6 +100,7 @@ const AttackItem: React.FC<AttackItemProps> = ({ attackData, onAttackSelect }) =
           />
         )}
       </div>
+      }
     </li>
   );
 };
