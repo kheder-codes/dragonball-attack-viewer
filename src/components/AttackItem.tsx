@@ -15,8 +15,8 @@ const AttackItem: React.FC<AttackItemProps> = ({ attackData, onAttackSelect }) =
   // public/images/ vorhanden sind und attackImageSource/opponentImageSource
   // den relativen Pfad innerhalb von public/images/ enthalten
   // (z.B. 'attacks/kamehameha.png' oder 'opponents/raditz.png')
-  const attackImagePath = `<span class="math-inline">\{process\.env\.PUBLIC\_URL\}/images/</span>{attackData.attackImageSource}`;
-  const opponentImagePath = `<span class="math-inline">\{process\.env\.PUBLIC\_URL\}/images/</span>{attackData.opponentImageSource}`;
+  const attackImagePath = `images/${attackData.attackImageSource}`;
+  const opponentImagePath = `images/${attackData.opponentImageSource}`;
 
   // Fehlerbehandlung für Bilder
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
