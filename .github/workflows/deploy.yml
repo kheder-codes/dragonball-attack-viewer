@@ -1,0 +1,56 @@
+# Name des Workflows (erscheint im "Actions"-Tab deines Repositories)
+name: Deploy React App to GitHub Pages
+
+# Trigger: Wann soll der Workflow ausgeführt werden?
+on:
+  # Bei jedem Push auf den 'main'-Branch
+  push:
+    branches:
+      - main # Passe dies an, wenn dein Hauptbranch anders heißt (z.B. master)
+  # Ermöglicht auch manuelles Auslösen über den "Actions"-Tab (optional)
+  workflow_dispatch:
+
+# Berechtigungen, die der Workflow benötigt
+permissions:
+  contents: write # Erforderlich, um in den gh-pages Branch zu pushen
+
+# Jobs: Eine Sequenz von Aufgaben, die ausgeführt werden
+jobs:
+  # Job-ID (kann beliebig sein)
+  deploy:
+    # Betriebssystem für den Runner (virtuelle Maschine)
+    runs-on: ubuntu-latest
+
+    # Schritte, die im Job ausgeführt werden
+    steps:
+      # Schritt 1: Code aus dem Repository auschecken
+      - name: Checkout code
+        uses: actions/checkout@v4 # Eine vordefinierte Action von GitHub
+
+      # Schritt 2: Node.js Umgebung einrichten
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Wähle die Node.js-Version, die dein Projekt benötigt
+          cache: 'npm' # Optional: Cache npm-Abhängigkeiten für schnellere Builds
+
+      # Schritt 3: Abhängigkeiten installieren
+      - name: Install dependencies
+        run: npm ci # 'npm ci' ist oft schneller und zuverlässiger in CI/CD als 'npm install'
+
+      # Schritt 4: React App bauen
+      # WICHTIG: Stelle sicher, dass die 'homepage' Eigenschaft in deiner package.json korrekt gesetzt ist!
+      - name: Build React app
+        run: npm run build # Führt das 'build'-Skript aus deiner package.json aus
+
+      # Schritt 5: Auf GitHub Pages deployen
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4 # Eine beliebte Action für das Deployment auf gh-pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Automatischer Token für Berechtigungen
+          publish_dir: ./build # Der Ordner, der den Build-Output enthält (Standard für CRA)
+          # Optional: publish_branch: gh-pages # Der Branch, in den deployed wird (Standard ist gh-pages)
+          # Optional: cname: your.custom.domain.com # Wenn du eine Custom Domain verwendest
+          # Optional: user_name und user_email für den Commit im gh-pages Branch
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
