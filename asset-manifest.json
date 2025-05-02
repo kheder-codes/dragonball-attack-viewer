@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dragonball-attack-viewer/static/css/main.00dc2e10.css",
-    "main.js": "/dragonball-attack-viewer/static/js/main.bab4e783.js",
+    "main.css": "/dragonball-attack-viewer/static/css/main.f855e6bc.css",
+    "main.js": "/dragonball-attack-viewer/static/js/main.b4e2bd1d.js",
     "static/js/453.6b7dc10e.chunk.js": "/dragonball-attack-viewer/static/js/453.6b7dc10e.chunk.js",
     "index.html": "/dragonball-attack-viewer/index.html",
-    "main.00dc2e10.css.map": "/dragonball-attack-viewer/static/css/main.00dc2e10.css.map",
-    "main.bab4e783.js.map": "/dragonball-attack-viewer/static/js/main.bab4e783.js.map",
+    "main.f855e6bc.css.map": "/dragonball-attack-viewer/static/css/main.f855e6bc.css.map",
+    "main.b4e2bd1d.js.map": "/dragonball-attack-viewer/static/js/main.b4e2bd1d.js.map",
     "453.6b7dc10e.chunk.js.map": "/dragonball-attack-viewer/static/js/453.6b7dc10e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.00dc2e10.css",
-    "static/js/main.bab4e783.js"
+    "static/css/main.f855e6bc.css",
+    "static/js/main.b4e2bd1d.js"
   ]
 }
