@@ -10,6 +10,7 @@ import gokuFightsRawData from './data/dbz_attacks.json';
 
 // Importiere unsere Transformationsfunktion aus Issue #3
 import { transformFightData } from './utils/dataTransformer';
+import AttackList from './components/AttackList';
 
 // Importiere Komponenten (werden später verwendet, können jetzt schon rein)
 // import AttackList from './components/AttackList';
@@ -66,6 +67,7 @@ function App() {
       <h1>Dragon Ball Attack Viewer</h1>
       {/* Zeige an, wie viele Einträge geladen wurden */}
       <p>Loaded {originalAttacks.length} attack entries.</p>
+    <AttackList attacks={originalAttacks} onAttackSelect={(attack) => console.log('selected attack: ', attack)}></AttackList>
 
       {/* Hier werden später die anderen Komponenten eingefügt */}
       {/* <SearchFilterControls /> */}
