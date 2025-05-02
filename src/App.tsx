@@ -71,36 +71,36 @@ function App() {
 
   // --- Selection Handler ---
   /** Setzt den ausgewählten Angriff für die Detailansicht */
-   const handleAttackSelect = (attack: AttackItemData) => {
-       console.log('App: Attack selected via Handler', attack);
-       setSelectedAttack(attack);
-   };
+  const handleAttackSelect = (attack: AttackItemData) => {
+    console.log('App: Attack selected via Handler', attack);
+    setSelectedAttack(attack);
+  };
 
-   /** Setzt die Auswahl zurück (für Detailansicht später) */
-   const handleGoBack = () => {
-       setSelectedAttack(null);
-   };
+  /** Setzt die Auswahl zurück (für Detailansicht später) */
+  const handleGoBack = () => {
+    setSelectedAttack(null);
+  };
 
 
   // --- Filtering Logic (aus Issue #10, aktualisiert mit useMemo) ---
   /** Filtert die originalAttacks basierend auf searchTerm und selectedSaga */
   const displayedAttacks = useMemo(() => {
-      console.log(`Filtering with Term: '${searchTerm}', Saga: '${selectedSaga}'`); // Debug-Log
-      return originalAttacks.filter(attack => {
-          // Prüfe auf Übereinstimmung mit dem Suchbegriff (Groß-/Kleinschreibung ignorieren)
-          const searchMatch = searchTerm ? (
-              attack.attackName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              attack.opponentName.toLowerCase().includes(searchTerm.toLowerCase())
-          ) : true; // Wenn searchTerm leer ist, matcht alles
+    console.log(`Filtering with Term: '${searchTerm}', Saga: '${selectedSaga}'`); // Debug-Log
+    return originalAttacks.filter(attack => {
+      // Prüfe auf Übereinstimmung mit dem Suchbegriff (Groß-/Kleinschreibung ignorieren)
+      const searchMatch = searchTerm ? (
+        attack.attackName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        attack.opponentName.toLowerCase().includes(searchTerm.toLowerCase())
+      ) : true; // Wenn searchTerm leer ist, matcht alles
 
-          // Prüfe auf Übereinstimmung mit der ausgewählten Saga
-          const sagaMatch = selectedSaga ? (
-              attack.saga === selectedSaga
-          ) : true; // Wenn selectedSaga leer ist ('All Sagas'), matcht alles
+      // Prüfe auf Übereinstimmung mit der ausgewählten Saga
+      const sagaMatch = selectedSaga ? (
+        attack.saga === selectedSaga
+      ) : true; // Wenn selectedSaga leer ist ('All Sagas'), matcht alles
 
-          // Nur Elemente zurückgeben, die beiden Kriterien entsprechen
-          return searchMatch && sagaMatch;
-      });
+      // Nur Elemente zurückgeben, die beiden Kriterien entsprechen
+      return searchMatch && sagaMatch;
+    });
   }, [originalAttacks, searchTerm, selectedSaga]); // Neuberechnung bei Änderung der Daten oder Filter
 
 
@@ -121,31 +121,30 @@ function App() {
          (Debug: Search='{searchTerm}', Saga='{selectedSaga || 'All'}')
       </p> */}
 
-<SearchFilterControls
+      <SearchFilterControls
         searchTerm={searchTerm}         // Aktuellen Suchbegriff übergeben
         selectedSaga={selectedSaga}       // Aktuell ausgewählte Saga übergeben
         uniqueSagas={uniqueSagas}         // Liste der einzigartigen Sagas übergeben
         onSearchChange={handleSearchChange} // Handler für Suchfeld-Änderungen übergeben
-        onSagaChange={handleSagaChange}  >
-          </SearchFilterControls>   // Handler für Saga-Dropdown-Änderungen übergeben
+        onSagaChange={handleSagaChange}  />
 
       {/* Hier wird entweder die Liste oder die Detailansicht gerendert */}
       {/* Aktuell immer die Liste */}
-       <AttackList
-         attacks={displayedAttacks} // Übergibt jetzt die GEFILTERTEN Angriffe
-         onAttackSelect={handleAttackSelect} // Übergibt den korrekten Handler
-       />
+      <AttackList
+        attacks={displayedAttacks} // Übergibt jetzt die GEFILTERTEN Angriffe
+        onAttackSelect={handleAttackSelect} // Übergibt den korrekten Handler
+      />
 
-       {/* Beispielhafte Anzeige für den ausgewählten Angriff (wird später durch AttackDetail ersetzt) */}
-       {selectedAttack && (
-           <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px', background: '#eee', padding: '1rem' }}>
-              <h2>Selected Attack (Debug):</h2>
-              <p>Name: {selectedAttack.attackName}</p>
-              <p>Opponent: {selectedAttack.opponentName}</p>
-              <p>Saga: {selectedAttack.saga}</p>
-              <button onClick={handleGoBack}>Clear Selection</button> {/* Beispiel für Zurücksetzen */}
-           </div>
-       )}
+      {/* Beispielhafte Anzeige für den ausgewählten Angriff (wird später durch AttackDetail ersetzt) */}
+      {selectedAttack && (
+        <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px', background: '#eee', padding: '1rem' }}>
+          <h2>Selected Attack (Debug):</h2>
+          <p>Name: {selectedAttack.attackName}</p>
+          <p>Opponent: {selectedAttack.opponentName}</p>
+          <p>Saga: {selectedAttack.saga}</p>
+          <button onClick={handleGoBack}>Clear Selection</button> {/* Beispiel für Zurücksetzen */}
+        </div>
+      )}
 
     </div>
   );
