@@ -1,51 +1,53 @@
 // src/components/AttackList.tsx
 import React from 'react';
-import { AttackItemData } from '../types/attackTypes';
-// Importiere die AttackItem Komponente
-import AttackItem from './AttackItem';
-// Importiere CSS-Module, falls verwendet (empfohlen für späteres Styling)
+import { AttackItemData } from '../types/attackTypes'; // Stelle sicher, dass der Pfad korrekt ist
+import AttackItem from './AttackItem'; // Stelle sicher, dass AttackItem hier importiert wird
+
+// Importiere CSS-Module, falls du sie verwendest (optional, für Styling)
 // import styles from './AttackList.module.css';
 
-// Definiere das Interface für die Props, die diese Komponente erhalten wird
+// Interface für die Props, die diese Komponente erwartet
 export interface AttackListProps {
+  /** Das Array der anzuzeigenden Angriffs-Items (bereits gefiltert) */
   readonly attacks: AttackItemData[];
+  /** Callback-Funktion, die aufgerufen wird, wenn ein Item angeklickt wird */
   readonly onAttackSelect: (attack: AttackItemData) => void;
 }
 
 /**
- * Komponente, die für das Rendern der Liste/des Grids der Angriffs-Items verantwortlich ist.
+ * Komponente, die eine Liste von Angriffen rendert.
+ * Zeigt eine Nachricht an, wenn keine Angriffe vorhanden sind.
  */
 const AttackList: React.FC<AttackListProps> = ({ attacks, onAttackSelect }) => {
 
-  // Behandle zuerst den Fall 'Keine Ergebnisse'
-  if (attacks.length === 0) {
-    return (
-      <div className="attack-list-container">
-        <h2>Attacks Used</h2>
-        {/* Füge später Styling für diese Nachricht hinzu */}
-        <p>No attacks match your filter criteria.</p>
-      </div>
-    );
-  }
-
-  // Rendere die Liste, wenn Angriffe vorhanden sind
+  // Die äußere Struktur und die Überschrift bleiben immer gleich
   return (
-    <div className="attack-list-container">
+    <div className="attack-list-container" /* style={styles.listContainer} */ >
       <h2>Attacks Used</h2>
-      {/* Wende später Grid-Styling über CSS/Module an */}
-      <ul className="attack-list" style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem' }}>
-        {attacks.map((attack) => (
-          <AttackItem
-            // React benötigt einen eindeutigen 'key' Prop beim Rendern von Listen.
-            // Verwende die eindeutige ID, die früher generiert wurde (angenommen, attack.id existiert).
-            key={attack.id}
-            // Übergib die Daten für diesen spezifischen Angriff
-            attackData={attack}
-            // Übergib den Klick-Handler nach unten an das AttackItem
-            onAttackSelect={onAttackSelect}
-          />
-        ))}
-      </ul>
+
+      {/* --- Bedingtes Rendering basierend auf attacks.length --- */}
+      {attacks.length === 0 ? (
+        // WAHR-Fall: Wenn das attacks-Array leer ist, zeige diese Nachricht an.
+        // Füge optional eine Klasse hinzu, z.B. className="no-results" für Styling.
+        <p className="no-results" /* style={styles.noResults} */>
+          No attacks match your filter criteria.
+        </p>
+      ) : (
+        // FALSCH-Fall: Wenn das attacks-Array NICHT leer ist, rendere die Liste.
+        // Füge optional eine Klasse hinzu, z.B. className="attack-list" für Styling.
+        // Die Inline-Styles sind hier als Beispiel beibehalten, können aber in CSS ausgelagert werden.
+        <ul className="attack-list" /* style={styles.list} */ style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem' }}>
+          {attacks.map((attack) => (
+            <AttackItem
+              key={attack.id} // Wichtiger Key für React-Listen
+              attackData={attack} // Die Daten für das einzelne Item
+              onAttackSelect={onAttackSelect} // Den Klick-Handler weitergeben
+            />
+          ))}
+        </ul>
+      )}
+      {/* --- Ende Bedingtes Rendering --- */}
+
     </div>
   );
 };
