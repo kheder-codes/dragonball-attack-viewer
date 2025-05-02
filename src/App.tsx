@@ -81,7 +81,7 @@ function App() {
   // --- Combined Filtering Logic using useMemo (Refined for Issue #12) ---
   const displayedAttacks = useMemo(() => {
     // Optional: Loggen, wann die Filterung tatsächlich ausgeführt wird (für Performance-Checks)
-    console.log(`Filtering attacks based on Saga: '<span class="math-inline">\{selectedSaga \|\| 'None'\}', Search\: '</span>{searchTerm || 'None'}'`);
+    console.log(`Filtering attacks based on Saga: '${selectedSaga || 'None'}', Search: '${searchTerm || 'None'}'`);
 
     let filtered = originalAttacks; // Starte mit allen Angriffen
 
