@@ -16,6 +16,8 @@ import AttackList from './components/AttackList';
 // import SearchFilterControls from './components/SearchFilterControls'; // Wird in Issue #11 importiert
 // import AttackDetail from './components/AttackDetail'; // Wird später importiert
 
+import SearchFilterControls from './components/SearchFilterControls'; // <-- HIER HINZUFÜGEN
+
 function App() {
   // State, um die ursprüngliche, transformierte (flache) Liste aller Attacken zu halten
   const [originalAttacks, setOriginalAttacks] = useState<AttackItemData[]>([]);
@@ -119,14 +121,13 @@ function App() {
          (Debug: Search='{searchTerm}', Saga='{selectedSaga || 'All'}')
       </p> */}
 
-      {/* Hier werden die Such-/Filter-Controls in Issue #11 eingefügt */}
-      {/* <SearchFilterControls
-          searchTerm={searchTerm}
-          selectedSaga={selectedSaga}
-          uniqueSagas={uniqueSagas}
-          onSearchChange={handleSearchChange}
-          onSagaChange={handleSagaChange}
-      /> */}
+<SearchFilterControls
+        searchTerm={searchTerm}         // Aktuellen Suchbegriff übergeben
+        selectedSaga={selectedSaga}       // Aktuell ausgewählte Saga übergeben
+        uniqueSagas={uniqueSagas}         // Liste der einzigartigen Sagas übergeben
+        onSearchChange={handleSearchChange} // Handler für Suchfeld-Änderungen übergeben
+        onSagaChange={handleSagaChange}  >
+          </SearchFilterControls>   // Handler für Saga-Dropdown-Änderungen übergeben
 
       {/* Hier wird entweder die Liste oder die Detailansicht gerendert */}
       {/* Aktuell immer die Liste */}
