@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState, useEffect, useMemo } from 'react'; // useMemo hinzugefügt
+import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 
 // Importiere unsere Typen aus Issue #2
@@ -13,10 +13,8 @@ import { transformFightData } from './utils/dataTransformer';
 
 // Importiere Komponenten
 import AttackList from './components/AttackList';
-// import SearchFilterControls from './components/SearchFilterControls'; // Wird in Issue #11 importiert
+import SearchFilterControls from './components/SearchFilterControls';
 // import AttackDetail from './components/AttackDetail'; // Wird später importiert
-
-import SearchFilterControls from './components/SearchFilterControls'; // <-- HIER HINZUFÜGEN
 
 function App() {
   // State, um die ursprüngliche, transformierte (flache) Liste aller Attacken zu halten
@@ -28,7 +26,7 @@ function App() {
   // State für den aktuell ausgewählten Angriff (für Detailansicht später)
   const [selectedAttack, setSelectedAttack] = useState<AttackItemData | null>(null);
 
-  // --- Filter States (aus Issue #10) ---
+  // --- Filter States ---
   const [searchTerm, setSearchTerm] = useState<string>(''); // State für den Suchbegriff
   const [selectedSaga, setSelectedSaga] = useState<string>(''); // State für die ausgewählte Saga (leerer String = 'Alle Sagas')
 
@@ -47,7 +45,7 @@ function App() {
   }, []); // Leeres Abhängigkeits-Array: Führt den Effekt nur einmal nach dem ersten Rendern aus!
 
 
-  // --- Calculate Unique Sagas (aus Issue #10) ---
+  // --- Calculate Unique Sagas ---
   /** Berechnet eine sortierte Liste einzigartiger Saga-Namen aus den Daten */
   const uniqueSagas = useMemo(() => {
     if (originalAttacks.length === 0) return [];
@@ -57,7 +55,7 @@ function App() {
   }, [originalAttacks]); // Abhängigkeit: Neuberechnung nur bei Änderung von originalAttacks
 
 
-  // --- Filter Handlers (aus Issue #10) ---
+  // --- Filter Handlers ---
   /** Aktualisiert den searchTerm State bei Eingabe im Suchfeld */
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -72,36 +70,48 @@ function App() {
   // --- Selection Handler ---
   /** Setzt den ausgewählten Angriff für die Detailansicht */
   const handleAttackSelect = (attack: AttackItemData) => {
-    console.log('App: Attack selected via Handler', attack);
-    setSelectedAttack(attack);
+      console.log('App: Attack selected via Handler', attack);
+      setSelectedAttack(attack);
   };
 
   /** Setzt die Auswahl zurück (für Detailansicht später) */
   const handleGoBack = () => {
-    setSelectedAttack(null);
+      setSelectedAttack(null);
   };
 
 
-  // --- Filtering Logic (aus Issue #10, aktualisiert mit useMemo) ---
-  /** Filtert die originalAttacks basierend auf searchTerm und selectedSaga */
+  // --- Combined Filtering Logic using useMemo (Refined for Issue #12) ---
   const displayedAttacks = useMemo(() => {
-    console.log(`Filtering with Term: '${searchTerm}', Saga: '${selectedSaga}'`); // Debug-Log
-    return originalAttacks.filter(attack => {
-      // Prüfe auf Übereinstimmung mit dem Suchbegriff (Groß-/Kleinschreibung ignorieren)
-      const searchMatch = searchTerm ? (
-        attack.attackName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        attack.opponentName.toLowerCase().includes(searchTerm.toLowerCase())
-      ) : true; // Wenn searchTerm leer ist, matcht alles
+    // Optional: Loggen, wann die Filterung tatsächlich ausgeführt wird (für Performance-Checks)
+    console.log(`Filtering attacks based on Saga: '<span class="math-inline">\{selectedSaga \|\| 'None'\}', Search\: '</span>{searchTerm || 'None'}'`);
 
-      // Prüfe auf Übereinstimmung mit der ausgewählten Saga
-      const sagaMatch = selectedSaga ? (
-        attack.saga === selectedSaga
-      ) : true; // Wenn selectedSaga leer ist ('All Sagas'), matcht alles
+    let filtered = originalAttacks; // Starte mit allen Angriffen
 
-      // Nur Elemente zurückgeben, die beiden Kriterien entsprechen
-      return searchMatch && sagaMatch;
-    });
-  }, [originalAttacks, searchTerm, selectedSaga]); // Neuberechnung bei Änderung der Daten oder Filter
+    // 1. Nach Saga filtern (nur wenn eine Saga ausgewählt ist)
+    if (selectedSaga) {
+      // Behalte nur die Angriffe, deren 'saga'-Eigenschaft mit der ausgewählten Saga übereinstimmt
+      filtered = filtered.filter(attack => attack.saga === selectedSaga);
+    }
+
+    // 2. Weiter nach Suchbegriff filtern (nur wenn ein Suchbegriff eingegeben wurde)
+    //    Dieser Filter wird auf das Ergebnis des Saga-Filters angewendet (oder auf alle, wenn keine Saga gewählt war)
+    if (searchTerm) {
+      // Wandle den Suchbegriff einmal in Kleinbuchstaben um für case-insensitive Suche
+      const lowerCaseSearchTerm = searchTerm.toLowerCase();
+      // Behalte nur die Angriffe, bei denen der Suchbegriff (case-insensitive)
+      // im Angriffsnamen ODER im Gegnernamen enthalten ist.
+      filtered = filtered.filter(attack =>
+        (attack.attackName && attack.attackName.toLowerCase().includes(lowerCaseSearchTerm)) ||
+        (attack.opponentName && attack.opponentName.toLowerCase().includes(lowerCaseSearchTerm))
+      );
+      // Die 'attack.attackName &&' Checks sind hinzugefügt, falls die Daten mal unvollständig sein könnten.
+    }
+
+    // Gib das endgültige, gefilterte Array zurück
+    return filtered;
+
+  }, [originalAttacks, searchTerm, selectedSaga]); // Abhängigkeiten: Neuberechnung nur, wenn sich diese ändern
+  // --- End Filtering Logic ---
 
 
   // --- Render-Logik ---
@@ -116,34 +126,30 @@ function App() {
     <div className="App">
       <h1>Dragon Ball Attack Viewer</h1>
 
-      {/* Temporäre Anzeige der Filterwerte für Debugging (kann später entfernt werden) */}
-      {/* <p style={{ color: 'grey', fontStyle: 'italic' }}>
-         (Debug: Search='{searchTerm}', Saga='{selectedSaga || 'All'}')
-      </p> */}
-
+      {/* Such-/Filter-Controls rendern und Props übergeben */}
       <SearchFilterControls
-        searchTerm={searchTerm}         // Aktuellen Suchbegriff übergeben
-        selectedSaga={selectedSaga}       // Aktuell ausgewählte Saga übergeben
-        uniqueSagas={uniqueSagas}         // Liste der einzigartigen Sagas übergeben
-        onSearchChange={handleSearchChange} // Handler für Suchfeld-Änderungen übergeben
-        onSagaChange={handleSagaChange}  />
-
-      {/* Hier wird entweder die Liste oder die Detailansicht gerendert */}
-      {/* Aktuell immer die Liste */}
-      <AttackList
-        attacks={displayedAttacks} // Übergibt jetzt die GEFILTERTEN Angriffe
-        onAttackSelect={handleAttackSelect} // Übergibt den korrekten Handler
+        searchTerm={searchTerm}
+        selectedSaga={selectedSaga}
+        uniqueSagas={uniqueSagas}
+        onSearchChange={handleSearchChange}
+        onSagaChange={handleSagaChange}
       />
 
-      {/* Beispielhafte Anzeige für den ausgewählten Angriff (wird später durch AttackDetail ersetzt) */}
+      {/* Die AttackList erhält die gefilterten Angriffe */}
+      <AttackList
+        attacks={displayedAttacks}
+        onAttackSelect={handleAttackSelect}
+      />
+
+      {/* Temporäre Anzeige für selectedAttack (kann bleiben oder später durch AttackDetail ersetzt werden) */}
       {selectedAttack && (
-        <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px', background: '#eee', padding: '1rem' }}>
-          <h2>Selected Attack (Debug):</h2>
-          <p>Name: {selectedAttack.attackName}</p>
-          <p>Opponent: {selectedAttack.opponentName}</p>
-          <p>Saga: {selectedAttack.saga}</p>
-          <button onClick={handleGoBack}>Clear Selection</button> {/* Beispiel für Zurücksetzen */}
-        </div>
+          <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px', background: '#eee', padding: '1rem' }}>
+             <h2>Selected Attack (Debug):</h2>
+             <p>Name: {selectedAttack.attackName}</p>
+             <p>Opponent: {selectedAttack.opponentName}</p>
+             <p>Saga: {selectedAttack.saga}</p>
+             <button onClick={handleGoBack}>Clear Selection</button>
+          </div>
       )}
 
     </div>
