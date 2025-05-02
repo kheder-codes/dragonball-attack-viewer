@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react'; // useMemo hinzugefügt
 import './App.css';
 
 // Importiere unsere Typen aus Issue #2
@@ -10,49 +10,97 @@ import gokuFightsRawData from './data/dbz_attacks.json';
 
 // Importiere unsere Transformationsfunktion aus Issue #3
 import { transformFightData } from './utils/dataTransformer';
-import AttackList from './components/AttackList';
 
-// Importiere Komponenten (werden später verwendet, können jetzt schon rein)
-// import AttackList from './components/AttackList';
-// import SearchFilterControls from './components/SearchFilterControls';
-// import AttackDetail from './components/AttackDetail';
+// Importiere Komponenten
+import AttackList from './components/AttackList';
+// import SearchFilterControls from './components/SearchFilterControls'; // Wird in Issue #11 importiert
+// import AttackDetail from './components/AttackDetail'; // Wird später importiert
 
 function App() {
   // State, um die ursprüngliche, transformierte (flache) Liste aller Attacken zu halten
-  // Initial leer, bis die Daten geladen sind. Der Typ ist AttackItemData[]
   const [originalAttacks, setOriginalAttacks] = useState<AttackItemData[]>([]);
 
-  // State für den Ladezustand (optional, aber gute Praxis)
-  // Initial auf true gesetzt, da wir am Anfang laden
+  // State für den Ladezustand
   const [loading, setLoading] = useState<boolean>(true);
 
+  // State für den aktuell ausgewählten Angriff (für Detailansicht später)
+  const [selectedAttack, setSelectedAttack] = useState<AttackItemData | null>(null);
+
+  // --- Filter States (aus Issue #10) ---
+  const [searchTerm, setSearchTerm] = useState<string>(''); // State für den Suchbegriff
+  const [selectedSaga, setSelectedSaga] = useState<string>(''); // State für die ausgewählte Saga (leerer String = 'Alle Sagas')
+
   // --- Daten Laden und Transformieren ---
-  // Dieser useEffect wird einmal beim Mounten der Komponente ausgeführt
   useEffect(() => {
     try {
-      // Wir sagen TypeScript, dass unsere importierten Rohdaten die Struktur GokuFightsData haben.
-      // Das nennt man Type Assertion.
       const rawData: GokuFightsData = gokuFightsRawData as GokuFightsData;
-
-      // Rufe unsere Hilfsfunktion auf, um die Daten umzuwandeln
       const transformedData = transformFightData(rawData);
-
-      // Speichere die transformierte, flache Liste im State
       setOriginalAttacks(transformedData);
-
-      // Log zur Überprüfung in der Browser-Konsole
       console.log('Daten transformiert und im State gesetzt:', transformedData);
-
     } catch (error) {
-      // Fehlerbehandlung, falls beim Laden/Transformieren etwas schiefgeht
       console.error('Fehler beim Laden oder Transformieren der Daten:', error);
-      // Hier könnte man auch einen Fehler-State setzen, um ihn anzuzeigen
     } finally {
-      // Wird immer ausgeführt, egal ob try erfolgreich war oder ein catch ausgelöst wurde
-      // WICHTIG: Setze den Ladezustand auf false!
       setLoading(false);
     }
   }, []); // Leeres Abhängigkeits-Array: Führt den Effekt nur einmal nach dem ersten Rendern aus!
+
+
+  // --- Calculate Unique Sagas (aus Issue #10) ---
+  /** Berechnet eine sortierte Liste einzigartiger Saga-Namen aus den Daten */
+  const uniqueSagas = useMemo(() => {
+    if (originalAttacks.length === 0) return [];
+    const sagas = originalAttacks.map(attack => attack.saga).filter(Boolean); // filter(Boolean) entfernt undefined/null/leere Strings
+    const uniqueSagaSet = new Set(sagas);
+    return Array.from(uniqueSagaSet).sort();
+  }, [originalAttacks]); // Abhängigkeit: Neuberechnung nur bei Änderung von originalAttacks
+
+
+  // --- Filter Handlers (aus Issue #10) ---
+  /** Aktualisiert den searchTerm State bei Eingabe im Suchfeld */
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  /** Aktualisiert den selectedSaga State bei Auswahl im Dropdown */
+  const handleSagaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSaga(event.target.value);
+  };
+
+
+  // --- Selection Handler ---
+  /** Setzt den ausgewählten Angriff für die Detailansicht */
+   const handleAttackSelect = (attack: AttackItemData) => {
+       console.log('App: Attack selected via Handler', attack);
+       setSelectedAttack(attack);
+   };
+
+   /** Setzt die Auswahl zurück (für Detailansicht später) */
+   const handleGoBack = () => {
+       setSelectedAttack(null);
+   };
+
+
+  // --- Filtering Logic (aus Issue #10, aktualisiert mit useMemo) ---
+  /** Filtert die originalAttacks basierend auf searchTerm und selectedSaga */
+  const displayedAttacks = useMemo(() => {
+      console.log(`Filtering with Term: '${searchTerm}', Saga: '${selectedSaga}'`); // Debug-Log
+      return originalAttacks.filter(attack => {
+          // Prüfe auf Übereinstimmung mit dem Suchbegriff (Groß-/Kleinschreibung ignorieren)
+          const searchMatch = searchTerm ? (
+              attack.attackName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              attack.opponentName.toLowerCase().includes(searchTerm.toLowerCase())
+          ) : true; // Wenn searchTerm leer ist, matcht alles
+
+          // Prüfe auf Übereinstimmung mit der ausgewählten Saga
+          const sagaMatch = selectedSaga ? (
+              attack.saga === selectedSaga
+          ) : true; // Wenn selectedSaga leer ist ('All Sagas'), matcht alles
+
+          // Nur Elemente zurückgeben, die beiden Kriterien entsprechen
+          return searchMatch && sagaMatch;
+      });
+  }, [originalAttacks, searchTerm, selectedSaga]); // Neuberechnung bei Änderung der Daten oder Filter
+
 
   // --- Render-Logik ---
 
@@ -65,14 +113,39 @@ function App() {
   return (
     <div className="App">
       <h1>Dragon Ball Attack Viewer</h1>
-      {/* Zeige an, wie viele Einträge geladen wurden */}
-      <p>Loaded {originalAttacks.length} attack entries.</p>
-    <AttackList attacks={originalAttacks} onAttackSelect={(attack) => console.log('selected attack: ', attack)}></AttackList>
 
-      {/* Hier werden später die anderen Komponenten eingefügt */}
-      {/* <SearchFilterControls /> */}
-      {/* <AttackList attacks={originalAttacks} /> */}
-      {/* <AttackDetail /> */}
+      {/* Temporäre Anzeige der Filterwerte für Debugging (kann später entfernt werden) */}
+      {/* <p style={{ color: 'grey', fontStyle: 'italic' }}>
+         (Debug: Search='{searchTerm}', Saga='{selectedSaga || 'All'}')
+      </p> */}
+
+      {/* Hier werden die Such-/Filter-Controls in Issue #11 eingefügt */}
+      {/* <SearchFilterControls
+          searchTerm={searchTerm}
+          selectedSaga={selectedSaga}
+          uniqueSagas={uniqueSagas}
+          onSearchChange={handleSearchChange}
+          onSagaChange={handleSagaChange}
+      /> */}
+
+      {/* Hier wird entweder die Liste oder die Detailansicht gerendert */}
+      {/* Aktuell immer die Liste */}
+       <AttackList
+         attacks={displayedAttacks} // Übergibt jetzt die GEFILTERTEN Angriffe
+         onAttackSelect={handleAttackSelect} // Übergibt den korrekten Handler
+       />
+
+       {/* Beispielhafte Anzeige für den ausgewählten Angriff (wird später durch AttackDetail ersetzt) */}
+       {selectedAttack && (
+           <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '10px', background: '#eee', padding: '1rem' }}>
+              <h2>Selected Attack (Debug):</h2>
+              <p>Name: {selectedAttack.attackName}</p>
+              <p>Opponent: {selectedAttack.opponentName}</p>
+              <p>Saga: {selectedAttack.saga}</p>
+              <button onClick={handleGoBack}>Clear Selection</button> {/* Beispiel für Zurücksetzen */}
+           </div>
+       )}
+
     </div>
   );
 } // Ende der App-Funktion
