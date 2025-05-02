@@ -2,19 +2,23 @@
 import React from 'react';
 import { AttackItemData } from '../types/attackTypes';
 
-// Define the interface for the props
 export interface AttackDetailProps {
-  /** The data for the selected attack item (guaranteed non-null by parent) */
   readonly selectedAttack: AttackItemData;
-  /** Callback function to navigate back to the list view */
   readonly onGoBack: () => void;
 }
 
-/**
- * Component responsible for displaying the detailed view of a single attack.
- */
 const AttackDetail: React.FC<AttackDetailProps> = ({ selectedAttack, onGoBack }) => {
-  // Basic structure - display logic will be added in a later issue
+  // Bildpfade unter Verwendung von PUBLIC_URL
+  const attackImagePath = `${process.env.PUBLIC_URL}/images/${selectedAttack.attackImageSource}`;
+  const opponentImagePath = `${process.env.PUBLIC_URL}/images/${selectedAttack.opponentImageSource}`;
+
+  // Fehlerbehandlung für fehlende Bilder
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = `${process.env.PUBLIC_URL}/images/placeholder.png`;
+    e.currentTarget.style.border = '1px solid #eee';
+  };
+
+  // Inline-Styles (können später in CSS-Module ausgelagert werden)
   const containerStyle: React.CSSProperties = {
     border: '1px solid #ccc',
     padding: '1.5rem',
@@ -23,27 +27,81 @@ const AttackDetail: React.FC<AttackDetailProps> = ({ selectedAttack, onGoBack })
     marginTop: '1rem',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
   };
-
-  const buttonStyle: React.CSSProperties = {
+  const backButtonStyle: React.CSSProperties = {
     marginBottom: '1rem',
     padding: '0.5rem 1rem',
     cursor: 'pointer',
   };
+  const attackNameStyle: React.CSSProperties = {
+    marginBottom: '1rem',
+    color: '#c70039',
+    fontSize: '1.8em',
+  };
+  const attackImageStyle: React.CSSProperties = {
+    maxWidth: '350px',
+    height: 'auto',
+    display: 'block',
+    marginBottom: '1rem',
+    borderRadius: '4px',
+    border: '1px solid #eee',
+    backgroundColor: '#fff',
+  };
+  const sagaTextStyle: React.CSSProperties = {
+    fontStyle: 'italic',
+    color: '#555',
+    marginBottom: '1.5rem',
+    fontSize: '1.1em',
+  };
+  const opponentSectionStyle: React.CSSProperties = {
+    marginTop: '1.5rem',
+    paddingTop: '1.5rem',
+    borderTop: '1px dashed #eee',
+  };
+  const opponentNameStyle: React.CSSProperties = {
+    marginBottom: '0.5rem',
+    fontSize: '1.3em',
+  };
+  const opponentImageStyle: React.CSSProperties = {
+    maxWidth: '200px',
+    height: 'auto',
+    borderRadius: '4px',
+    border: '1px solid #eee',
+    backgroundColor: '#fff',
+    display: 'block',
+  };
 
   return (
     <div className="attack-detail-view" style={containerStyle}>
-      {/* Back button - functionality added later */}
-      <button onClick={onGoBack} style={buttonStyle}>
-        &larr; Back to List
+      <button onClick={onGoBack} style={backButtonStyle}>
+        ← Back
       </button>
 
-      {/* Placeholder for attack details */}
-      <h2>{selectedAttack.attackName} - Details</h2>
-      <p>Saga: {selectedAttack.saga}</p>
-      <p>Opponent: {selectedAttack.opponentName}</p>
-      <p>Attack Image Source: {selectedAttack.attackImageSource}</p>
-      <p>Opponent Image Source: {selectedAttack.opponentImageSource}</p>
-      {/* Image rendering and full details will be implemented in a subsequent issue */}
+      {/* Angriffstitel */}
+      <h2 style={attackNameStyle}>{selectedAttack.attackName}</h2>
+
+      {/* Angriffsbild */}
+      <img
+        src={attackImagePath}
+        alt={selectedAttack.attackName}
+        style={attackImageStyle}
+        onError={handleImageError}
+      />
+
+      {/* Saga-Info */}
+      <p style={sagaTextStyle}>
+        <strong>Saga:</strong> {selectedAttack.saga}
+      </p>
+
+      {/* Gegner-Bereich */}
+      <div style={opponentSectionStyle}>
+        <h3 style={opponentNameStyle}>Gegner: {selectedAttack.opponentName}</h3>
+        <img
+          src={opponentImagePath}
+          alt={selectedAttack.opponentName}
+          style={opponentImageStyle}
+          onError={handleImageError}
+        />
+      </div>
     </div>
   );
 };
