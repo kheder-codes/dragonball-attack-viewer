@@ -67,7 +67,7 @@ function App() {
       <h1>Dragon Ball Attack Viewer</h1>
       {/* Zeige an, wie viele Einträge geladen wurden */}
       <p>Loaded {originalAttacks.length} attack entries.</p>
-
+    <AttackList attacks={originalAttacks} onAttackSelect={(attack) => console.log('selected attack: ', attack)}></AttackList>
 
       {/* Hier werden später die anderen Komponenten eingefügt */}
       {/* <SearchFilterControls /> */}
