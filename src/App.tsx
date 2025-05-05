@@ -1,86 +1,78 @@
 // src/App.tsx (Simplified Example showing data loading)
+import { DataProvider, useDataContext } from './context/DataContext';
 
-import React, { useState, useEffect } from 'react';
+
+import { createContext } from 'react';
 // Import Router components - setup happens in Issue #33, usage in later issues
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 
 // Import types defined in attackTypes.ts
 import {
-    GokuFightsData,
-    TransformedData,
-    EnemyData,
-    AttackData
+  TransformedData
 } from './types/attackTypes';
 
-// Import the raw JSON data
-// Make sure the path is correct relative to App.tsx
-// Ensure your build setup (like Create React App or Vite) handles JSON imports.
-// You might need to adjust tsconfig.json ("resolveJsonModule": true).
-import gokuFightsRawData from './data/dbz_attacks.json';
-
-// Import the data transformation function
-import { transformFightData } from './utils/dataTransformer';
-
+// Kontext für die Daten bereitstellen
+export const DataContext = createContext<TransformedData | null>(null);
 
 // Placeholder für Enemy-Detail
 function EnemyDetailRoute() {
   const { enemyId } = useParams<{ enemyId: string }>();
-  return <div>Enemy Detail Placeholder: {enemyId}</div>;
+  const data = useDataContext();
+
+  if (!enemyId) return <div>Kein Gegner ausgewählt.</div>;
+
+  const enemy = data.enemiesMap.get(enemyId);
+
+  if (!enemy) return <div>Gegner nicht gefunden: {enemyId}</div>;
+
+  return (
+    <div>
+      <h2>{enemy.opponentName}</h2>
+      <p>ID: {enemy.id}</p>
+      <p>Saga: {enemy.saga}</p>
+      {/* Weitere Felder je nach EnemyData-Struktur */}
+    </div>
+  );
 }
 
 // Placeholder für Attack-Detail
 function AttackDetailRoute() {
   const { attackId } = useParams<{ attackId: string }>();
-  return <div>Attack Detail Placeholder: {attackId}</div>;
+  const data = useDataContext();
+
+  if (!attackId) return <div>Keine Attacke ausgewählt.</div>;
+
+  const attack = data.attacksMap.get(attackId);
+
+  if (!attack) return <div>Attacke nicht gefunden: {attackId}</div>;
+
+  return (
+    <div>
+      <h2>{attack.attackName}</h2>
+      <p>ID: {attack.id}</p>
+      <p>Gegner: {attack.usedAgainstEnemies.join(', ')}</p>
+    </div>
+  );
 }
 
 function App() {
-    const [transformedData, setTransformedData] = useState<TransformedData | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    // Effect hook to load and transform data once when the component mounts
-    useEffect(() => {
-        console.log("App component mounted, attempting to load data...");
-        try {
-            // Explicitly cast the imported JSON to our defined type for type safety
-            const rawData: GokuFightsData = gokuFightsRawData as GokuFightsData;
-            console.log("Raw data loaded, starting transformation...");
-
-            // Perform the data transformation
-            const data = transformFightData(rawData);
-            setTransformedData(data); // Store the result in state
-            console.log('Data transformation successful.');
-
-        } catch (err) {
-            // Catch potential errors during loading or transformation
-            console.error('Error during data loading or transformation:', err);
-            setError(err instanceof Error ? err.message : 'An unknown error occurred during data processing.');
-        } finally {
-            // Ensure loading state is set to false regardless of success or failure
-            setLoading(false);
-            console.log("Data loading process finished.");
-        }
-    }, []); // Empty dependency array means this effect runs only once after initial render
-
-
-    return (
-      <Router>
+  return (
+    <DataProvider>
       <Routes>
         <Route
           path="/"
           element={
             <div className="App">
               <h1>Dragon Ball Attack Viewer</h1>
-
             </div>
           }
         />
         <Route path="/enemies/:enemyId" element={<EnemyDetailRoute />} />
         <Route path="/attacks/:attackId" element={<AttackDetailRoute />} />
       </Routes>
-    </Router>
-    );
+    </DataProvider>
+  );
 }
 
 export default App;
+
