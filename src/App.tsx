@@ -16,6 +16,20 @@ import AttackList from './components/AttackList';
 import AttackDetail from './components/AttackDetail';
 import SearchFilterControls from './components/SearchFilterControls';
 // import AttackDetail from './components/AttackDetail'; // Wird später importiert
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+
+// Placeholder für Enemy-Detail
+function EnemyDetailRoute() {
+  const { enemyId } = useParams<{ enemyId: string }>();
+  return <div>Enemy Detail Placeholder: {enemyId}</div>;
+}
+
+// Placeholder für Attack-Detail
+function AttackDetailRoute() {
+  const { attackId } = useParams<{ attackId: string }>();
+  return <div>Attack Detail Placeholder: {attackId}</div>;
+}
+
 
 function App() {
   const [originalAttacks, setOriginalAttacks] = useState<AttackItemData[]>([]);
@@ -68,13 +82,13 @@ function App() {
   // --- Selection Handler ---
   /** Setzt den ausgewählten Angriff für die Detailansicht */
   const handleAttackSelect = (attack: AttackItemData) => {
-      console.log('App: Attack selected via Handler', attack);
-      setSelectedAttack(attack);
+    console.log('App: Attack selected via Handler', attack);
+    setSelectedAttack(attack);
   };
 
   /** Setzt die Auswahl zurück (für Detailansicht später) */
   const handleGoBack = () => {
-      setSelectedAttack(null);
+    setSelectedAttack(null);
   };
 
 
@@ -120,35 +134,41 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Dragon Ball Attack Viewer</h1>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="App">
+              <h1>Dragon Ball Attack Viewer</h1>
 
-      {/* Such-/Filter-Controls rendern und Props übergeben */}
-      <SearchFilterControls
-        searchTerm={searchTerm}
-        selectedSaga={selectedSaga}
-        uniqueSagas={uniqueSagas}
-        onSearchChange={handleSearchChange}
-        onSagaChange={handleSagaChange}
-      />
+              {/* Such-/Filter-Controls rendern und Props übergeben */}
+              <SearchFilterControls
+                searchTerm={searchTerm}
+                selectedSaga={selectedSaga}
+                uniqueSagas={uniqueSagas}
+                onSearchChange={handleSearchChange}
+                onSagaChange={handleSagaChange}
+              />
 
-      {/* === HIER IST DER WICHTIGE PUNKT FÜR ISSUE #13 === */}
-      {/* Die AttackList erhält die gefilterten Angriffe */}
-      <AttackList
-        attacks={displayedAttacks}  // <-- Bestätigen, dass hier displayedAttacks steht
-        onAttackSelect={handleAttackSelect}
-      />
-      {/* ================================================ */}
+              {/* === HIER IST DER WICHTIGE PUNKT FÜR ISSUE #13 === */}
+              {/* Die AttackList erhält die gefilterten Angriffe */}
+              <AttackList
+                attacks={displayedAttacks}  // <-- Bestätigen, dass hier displayedAttacks steht
+                onAttackSelect={handleAttackSelect}
+              />
+              {/* ================================================ */}
 
-      {selectedAttack && (
-        <AttackDetail
-          selectedAttack={selectedAttack}
-          onGoBack={handleGoBack}
+            </div>
+          }
         />
-      )}
-
-    </div>
+        <Route path="/enemies/:enemyId" element={<EnemyDetailRoute />} />
+        <Route path="/attacks/:attackId" element={<AttackDetailRoute />} />
+      </Routes>
+    </Router>
   );
 }
+
+
 
 export default App;
