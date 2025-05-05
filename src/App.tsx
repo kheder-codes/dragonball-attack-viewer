@@ -1,22 +1,26 @@
-// src/App.tsx
-import React, { useState, useEffect, useMemo } from 'react';
-import './App.css';
+// src/App.tsx (Simplified Example showing data loading)
 
-// Importiere unsere Typen aus Issue #2
-import { GokuFightsData, AttackItemData } from './types/attackTypes';
+import React, { useState, useEffect } from 'react';
+// Import Router components - setup happens in Issue #33, usage in later issues
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 
-// Importiere die rohen JSON-Daten (Stelle sicher, dass die Datei in src/data/ liegt!)
+// Import types defined in attackTypes.ts
+import {
+    GokuFightsData,
+    TransformedData,
+    EnemyData,
+    AttackData
+} from './types/attackTypes';
+
+// Import the raw JSON data
+// Make sure the path is correct relative to App.tsx
+// Ensure your build setup (like Create React App or Vite) handles JSON imports.
+// You might need to adjust tsconfig.json ("resolveJsonModule": true).
 import gokuFightsRawData from './data/dbz_attacks.json';
 
-// Importiere unsere Transformationsfunktion aus Issue #3
+// Import the data transformation function
 import { transformFightData } from './utils/dataTransformer';
 
-// Importiere Komponenten
-import AttackList from './components/AttackList';
-import AttackDetail from './components/AttackDetail';
-import SearchFilterControls from './components/SearchFilterControls';
-// import AttackDetail from './components/AttackDetail'; // Wird später importiert
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
 // Placeholder für Enemy-Detail
 function EnemyDetailRoute() {
@@ -30,134 +34,44 @@ function AttackDetailRoute() {
   return <div>Attack Detail Placeholder: {attackId}</div>;
 }
 
-
 function App() {
-  const [originalAttacks, setOriginalAttacks] = useState<AttackItemData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+    const [transformedData, setTransformedData] = useState<TransformedData | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
-  // State für den aktuell ausgewählten Angriff (für Detailansicht später)
-  const [selectedAttack, setSelectedAttack] = useState<AttackItemData | null>(null);
+    // Effect hook to load and transform data once when the component mounts
+    useEffect(() => {
+        console.log("App component mounted, attempting to load data...");
+        try {
+            // Explicitly cast the imported JSON to our defined type for type safety
+            const rawData: GokuFightsData = gokuFightsRawData as GokuFightsData;
+            console.log("Raw data loaded, starting transformation...");
 
-  // --- Filter States ---
-  const [searchTerm, setSearchTerm] = useState<string>(''); // State für den Suchbegriff
-  const [selectedSaga, setSelectedSaga] = useState<string>(''); // State für die ausgewählte Saga (leerer String = 'Alle Sagas')
+            // Perform the data transformation
+            const data = transformFightData(rawData);
+            setTransformedData(data); // Store the result in state
+            console.log('Data transformation successful.');
 
-  // --- Daten Laden und Transformieren ---
-  useEffect(() => {
-    try {
-      const rawData: GokuFightsData = gokuFightsRawData as GokuFightsData;
-      const transformedData = transformFightData(rawData);
-      setOriginalAttacks(transformedData);
-      console.log('Daten transformiert und im State gesetzt:', transformedData);
-    } catch (error) {
-      console.error('Fehler beim Laden oder Transformieren der Daten:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, []); // Leeres Abhängigkeits-Array: Führt den Effekt nur einmal nach dem ersten Rendern aus!
-
-
-  // --- Calculate Unique Sagas ---
-  /** Berechnet eine sortierte Liste einzigartiger Saga-Namen aus den Daten */
-  const uniqueSagas = useMemo(() => {
-    if (originalAttacks.length === 0) return [];
-    const sagas = originalAttacks.map(attack => attack.saga).filter(Boolean); // filter(Boolean) entfernt undefined/null/leere Strings
-    const uniqueSagaSet = new Set(sagas);
-    return Array.from(uniqueSagaSet).sort();
-  }, [originalAttacks]); // Abhängigkeit: Neuberechnung nur bei Änderung von originalAttacks
+        } catch (err) {
+            // Catch potential errors during loading or transformation
+            console.error('Error during data loading or transformation:', err);
+            setError(err instanceof Error ? err.message : 'An unknown error occurred during data processing.');
+        } finally {
+            // Ensure loading state is set to false regardless of success or failure
+            setLoading(false);
+            console.log("Data loading process finished.");
+        }
+    }, []); // Empty dependency array means this effect runs only once after initial render
 
 
-  // --- Filter Handlers ---
-  /** Aktualisiert den searchTerm State bei Eingabe im Suchfeld */
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
-  /** Aktualisiert den selectedSaga State bei Auswahl im Dropdown */
-  const handleSagaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSaga(event.target.value);
-  };
-
-
-  // --- Selection Handler ---
-  /** Setzt den ausgewählten Angriff für die Detailansicht */
-  const handleAttackSelect = (attack: AttackItemData) => {
-    console.log('App: Attack selected via Handler', attack);
-    setSelectedAttack(attack);
-  };
-
-  /** Setzt die Auswahl zurück (für Detailansicht später) */
-  const handleGoBack = () => {
-    setSelectedAttack(null);
-  };
-
-
-  // --- Combined Filtering Logic using useMemo (Refined for Issue #12) ---
-  const displayedAttacks = useMemo(() => {
-    // Optional: Loggen, wann die Filterung tatsächlich ausgeführt wird (für Performance-Checks)
-    console.log(`Filtering attacks based on Saga: '${selectedSaga || 'None'}', Search: '${searchTerm || 'None'}'`);
-
-    let filtered = originalAttacks; // Starte mit allen Angriffen
-
-    // 1. Nach Saga filtern (nur wenn eine Saga ausgewählt ist)
-    if (selectedSaga) {
-      // Behalte nur die Angriffe, deren 'saga'-Eigenschaft mit der ausgewählten Saga übereinstimmt
-      filtered = filtered.filter(attack => attack.saga === selectedSaga);
-    }
-
-    // 2. Weiter nach Suchbegriff filtern (nur wenn ein Suchbegriff eingegeben wurde)
-    //    Dieser Filter wird auf das Ergebnis des Saga-Filters angewendet (oder auf alle, wenn keine Saga gewählt war)
-    if (searchTerm) {
-      // Wandle den Suchbegriff einmal in Kleinbuchstaben um für case-insensitive Suche
-      const lowerCaseSearchTerm = searchTerm.toLowerCase();
-      // Behalte nur die Angriffe, bei denen der Suchbegriff (case-insensitive)
-      // im Angriffsnamen ODER im Gegnernamen enthalten ist.
-      filtered = filtered.filter(attack =>
-        (attack.attackName && attack.attackName.toLowerCase().includes(lowerCaseSearchTerm)) ||
-        (attack.opponentName && attack.opponentName.toLowerCase().includes(lowerCaseSearchTerm))
-      );
-      // Die 'attack.attackName &&' Checks sind hinzugefügt, falls die Daten mal unvollständig sein könnten.
-    }
-
-    // Gib das endgültige, gefilterte Array zurück
-    return filtered;
-
-  }, [originalAttacks, searchTerm, selectedSaga]); // Abhängigkeiten: Neuberechnung nur, wenn sich diese ändern
-  // --- End Filtering Logic ---
-
-
-  // --- Render-Logik ---
-
-  // Wenn noch geladen wird, zeige eine Ladeanzeige
-  if (loading) {
-    return <div className="App"><p>Loading data...</p></div>;
-  }
-
-  return (
-    <Router>
+    return (
+      <Router>
       <Routes>
         <Route
           path="/"
           element={
             <div className="App">
               <h1>Dragon Ball Attack Viewer</h1>
-
-              {/* Such-/Filter-Controls rendern und Props übergeben */}
-              <SearchFilterControls
-                searchTerm={searchTerm}
-                selectedSaga={selectedSaga}
-                uniqueSagas={uniqueSagas}
-                onSearchChange={handleSearchChange}
-                onSagaChange={handleSagaChange}
-              />
-
-              {/* === HIER IST DER WICHTIGE PUNKT FÜR ISSUE #13 === */}
-              {/* Die AttackList erhält die gefilterten Angriffe */}
-              <AttackList
-                attacks={displayedAttacks}  // <-- Bestätigen, dass hier displayedAttacks steht
-                onAttackSelect={handleAttackSelect}
-              />
-              {/* ================================================ */}
 
             </div>
           }
@@ -166,9 +80,7 @@ function App() {
         <Route path="/attacks/:attackId" element={<AttackDetailRoute />} />
       </Routes>
     </Router>
-  );
+    );
 }
-
-
 
 export default App;
