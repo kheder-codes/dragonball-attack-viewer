@@ -1,23 +1,16 @@
 // src/App.tsx (Simplified Example showing data loading)
-import { DataProvider, useDataContext } from './context/DataContext';
+import { DataProvider, useGokuDataContext } from './context/DataContext';
 
 
 import { createContext } from 'react';
 // Import Router components - setup happens in Issue #33, usage in later issues
 import { Routes, Route, useParams } from 'react-router-dom';
-
-// Import types defined in attackTypes.ts
-import {
-  TransformedData
-} from './types/attackTypes';
-
-// Kontext für die Daten bereitstellen
-export const DataContext = createContext<TransformedData | null>(null);
+import EnemyList from './components/EnemyList';
 
 // Placeholder für Enemy-Detail
 function EnemyDetailRoute() {
   const { enemyId } = useParams<{ enemyId: string }>();
-  const data = useDataContext();
+  const data = useGokuDataContext();
 
   if (!enemyId) return <div>Kein Gegner ausgewählt.</div>;
 
@@ -30,6 +23,7 @@ function EnemyDetailRoute() {
       <h2>{enemy.opponentName}</h2>
       <p>ID: {enemy.id}</p>
       <p>Saga: {enemy.saga}</p>
+      <p>Attacks used against: {enemy.attacksUsedAgainst.map(attack => attack.attackName).join(', ')}</p>
       {/* Weitere Felder je nach EnemyData-Struktur */}
     </div>
   );
@@ -38,7 +32,7 @@ function EnemyDetailRoute() {
 // Placeholder für Attack-Detail
 function AttackDetailRoute() {
   const { attackId } = useParams<{ attackId: string }>();
-  const data = useDataContext();
+  const data = useGokuDataContext();
 
   if (!attackId) return <div>Keine Attacke ausgewählt.</div>;
 
@@ -64,6 +58,7 @@ function App() {
           element={
             <div className="App">
               <h1>Dragon Ball Attack Viewer</h1>
+              <EnemyList /> {/* EnemyList wird hier verwendet */}
             </div>
           }
         />
