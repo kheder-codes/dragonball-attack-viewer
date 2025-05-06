@@ -1,24 +1,23 @@
-// src/components/AttackItem.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AttackInstance } from '../types/attackTypes';
+import { EnemyData } from '../types/attackTypes';
 
-interface AttackItemProps {
-  attack: AttackInstance;
+interface EnemyItemProps {
+  enemy: EnemyData;
 }
 
-const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
+const EnemyItem: React.FC<EnemyItemProps> = ({ enemy }) => {
   return (
-    <li className="attack-item" style={styles.card}>
-      <Link to={`/attacks/${attack.attackId}`} style={styles.link}>
+    <div className="enemy-item" style={styles.card}>
+      <Link to={`/enemies/${enemy.id}`} style={styles.link}>
         <img
-          src={`${process.env.PUBLIC_URL}/images/${attack.attackImageSource}`}
-          alt={attack.attackName}
+          src={`${process.env.PUBLIC_URL}/images/${enemy.opponentImageSource}`}
+          alt={enemy.opponentName}
           style={styles.image}
         />
-        <h3 style={styles.name}>{attack.attackName}</h3>
+        <h3 style={styles.name}>{enemy.opponentName}</h3>
       </Link>
-    </li>
+    </div>
   );
 };
 
@@ -27,10 +26,8 @@ const styles = {
     border: '1px solid #ccc',
     borderRadius: '8px',
     padding: '16px',
-    
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     margin: '8px',
-    listStyle: 'none',
   },
   link: {
     textDecoration: 'none',
@@ -48,4 +45,4 @@ const styles = {
   },
 };
 
-export default AttackItem;
+export default EnemyItem;
