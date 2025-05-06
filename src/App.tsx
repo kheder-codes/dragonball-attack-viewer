@@ -6,6 +6,8 @@ import { createContext } from 'react';
 // Import Router components - setup happens in Issue #33, usage in later issues
 import { Routes, Route, useParams } from 'react-router-dom';
 import EnemyList from './components/EnemyList';
+import EnemyDetail from './components/EnemyDetail';
+
 
 // Placeholder für Enemy-Detail
 function EnemyDetailRoute() {
@@ -62,7 +64,7 @@ function App() {
             </div>
           }
         />
-        <Route path="/enemies/:enemyId" element={<EnemyDetailRoute />} />
+        <Route path="/enemies/:enemyId" element={<EnemyDetail />} />
         <Route path="/attacks/:attackId" element={<AttackDetailRoute />} />
       </Routes>
     </DataProvider>
