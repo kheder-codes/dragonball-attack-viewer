@@ -1,10 +1,9 @@
 // src/App.tsx (Simplified Example showing data loading)
-import { DataProvider, useDataContext } from './context/DataContext';
+import { DataProvider } from './context/DataContext';
 
 
-import { createContext } from 'react';
 // Import Router components - setup happens in Issue #33, usage in later issues
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import EnemyList from './components/EnemyList';
 import EnemyDetail from './components/EnemyDetail';
 import AttackDetail from './components/AttackDetail';
