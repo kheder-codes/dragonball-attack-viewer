@@ -3,7 +3,7 @@
     {
       "saga": "Saiyajin-Saga",
       "opponentName": "Radditz",
-      "opponentImageSource": "opponents/radditz.jpg",
+      "opponentImageSource": "opponents/radditz.png",
       "attacks": [
         {
           "attackName": "Kamehameha",
@@ -22,7 +22,7 @@
     {
       "saga": "Saiyajin-Saga",
       "opponentName": "Nappa",
-      "opponentImageSource": "opponents/nappa.jpg",
+      "opponentImageSource": "opponents/nappa.png",
       "attacks": [
         {
           "attackName": "Kaioken",
@@ -45,7 +45,7 @@
     {
       "saga": "Saiyajin-Saga",
       "opponentName": "Vegeta (Saiyajin-Saga)",
-      "opponentImageSource": "opponents/vegeta-saiyajin-saga.jpg",
+      "opponentImageSource": "vegeta.png",
       "attacks": [
         {
           "attackName": "Kaioken (bis zu x4)",
@@ -72,7 +72,7 @@
     {
       "saga": "Freezer-Saga",
       "opponentName": "Recoome",
-      "opponentImageSource": "opponents/recoome.jpg",
+      "opponentImageSource": "opponents/recoome.png",
       "attacks": [
         {
           "attackName": "Ellenbogenschlag (entscheidend)",
@@ -91,7 +91,7 @@
     {
       "saga": "Freezer-Saga",
       "opponentName": "Burter & Jeice",
-      "opponentImageSource": "opponents/burter-jeice.jpg",
+      "opponentImageSource": "baata-und-jees.png",
       "attacks": [
         {
           "attackName": "Hochgeschwindigkeitskampf",
@@ -110,7 +110,7 @@
     {
       "saga": "Freezer-Saga",
       "opponentName": "Captain Ginyu",
-      "opponentImageSource": "opponents/captain-ginyu.jpg",
+      "opponentImageSource": "opponents/captain-ginyu.png",
       "attacks": [
         {
           "attackName": "Hochgeschwindigkeitskampf",
@@ -133,7 +133,7 @@
     {
       "saga": "Freezer-Saga",
       "opponentName": "Freezer",
-      "opponentImageSource": "opponents/freezer.jpg",
+      "opponentImageSource": "opponents/freezer.png",
       "attacks": [
         {
           "attackName": "Kamehameha",
@@ -172,7 +172,7 @@
     {
       "saga": "Cell-Saga",
       "opponentName": "Android 19",
-      "opponentImageSource": "opponents/android-19.jpg",
+      "opponentImageSource": "opponents/android-19.png",
       "attacks": [
         {
           "attackName": "Super-Saiyajin Transformation",
@@ -195,7 +195,7 @@
     {
       "saga": "Cell-Saga",
       "opponentName": "Cell (Perfekte Form)",
-      "opponentImageSource": "opponents/cell-perfekt.jpg",
+      "opponentImageSource": "opponents/cell-perfekt.png",
       "attacks": [
         {
           "attackName": "Super-Saiyajin Transformation (inkl. Full Power/Grade 4)",
@@ -230,7 +230,7 @@
     {
       "saga": "Buu-Saga",
       "opponentName": "Yakon",
-      "opponentImageSource": "opponents/yakon.jpg",
+      "opponentImageSource": "opponents/yakon.png",
       "attacks": [
         {
           "attackName": "Super-Saiyajin Transformation (kurzer Ausbruch zur Überladung)",
@@ -245,7 +245,7 @@
     {
       "saga": "Buu-Saga",
       "opponentName": "Majin Vegeta",
-      "opponentImageSource": "opponents/majin-vegeta.jpg",
+      "opponentImageSource": "majin-vegeta.png",
       "attacks": [
         {
           "attackName": "Super-Saiyajin 2 Transformation",
@@ -272,7 +272,7 @@
     {
       "saga": "Buu-Saga",
       "opponentName": "Majin Buu (Fett)",
-      "opponentImageSource": "opponents/majin-buu-fett.jpg",
+      "opponentImageSource": "majin-buu.png",
       "attacks": [
         {
           "attackName": "Super-Saiyajin 3 Transformation",
@@ -299,7 +299,7 @@
     {
       "saga": "Buu-Saga",
       "opponentName": "Kid Buu",
-      "opponentImageSource": "opponents/kid-buu.jpg",
+      "opponentImageSource": "opponents/kid-buu.png",
       "attacks": [
         {
           "attackName": "Super-Saiyajin 3 Transformation",
