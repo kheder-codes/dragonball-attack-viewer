@@ -8,13 +8,14 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import EnemyList from './components/EnemyList';
 import EnemyDetail from './components/EnemyDetail';
 import AttackDetail from './components/AttackDetail';
-
+import Header from './components/Header';
 
 
 
 function App() {
   return (
     <DataProvider>
+      <Header />
       <Routes>
         <Route
           path="/"
