@@ -1,19 +1,28 @@
 import React from 'react';
-import { useGokuDataContext } from '../context/DataContext';
+import { useDataContext } from '../context/DataContext';
 import EnemyItem from './EnemyItem';
 
-const EnemyList: React.FC = () => {
-  const data = useGokuDataContext();
+interface EnemyListProps {
+  enemyIds?: string[];
+}
+
+const EnemyList: React.FC<EnemyListProps> = ({ enemyIds }) => {
+  const data = useDataContext();
+
+  const enemies = enemyIds?.length 
+    ? enemyIds.map(id => data.enemiesMap.get(id))
+    : data.enemiesArray;
+
 
   // Lade- und leere Zustände behandeln
-  if (!data.enemiesArray || data.enemiesArray.length === 0) {
+  if (!enemies.length) {
     return <div>Keine Gegner verfügbar.</div>;
   }
 
   return (
     <div style={styles.grid}>
-      {data.enemiesArray.map((enemy) => (
-        <EnemyItem key={enemy.id} enemy={enemy} />
+      {enemies.map((enemy) => (
+        <EnemyItem key={enemy?.id} enemy={enemy!} />
       ))}
     </div>
   );

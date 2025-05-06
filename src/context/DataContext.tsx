@@ -9,7 +9,7 @@ import { GokuFightsData, TransformedData } from '../types/attackTypes';
 
 const DataContext = createContext<TransformedData | undefined>(undefined);
 
-export function useGokuDataContext(): TransformedData {
+export function useDataContext(): TransformedData {
     const ctx = useContext(DataContext);
     if (!ctx) throw new Error('useDataContext must be used within a DataProvider');
     return ctx;

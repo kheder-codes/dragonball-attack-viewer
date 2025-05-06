@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useGokuDataContext } from '../context/DataContext';
+import { useDataContext } from '../context/DataContext';
 import AttackList from './AttackList';
 
 const EnemyDetail: React.FC = () => {
   const { enemyId } = useParams<{ enemyId: string }>();
-  const data = useGokuDataContext();
+  const data = useDataContext();
 
   // Handling für fehlende oder nicht gefundene Gegner
   if (!enemyId) {
