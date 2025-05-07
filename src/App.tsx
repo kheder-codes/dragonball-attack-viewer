@@ -15,6 +15,7 @@ function App() {
   return (
     <DataProvider>
       <Header />
+  
       <Routes>
         <Route
           path="/"
