@@ -8,41 +8,21 @@ interface EnemyItemProps {
 
 const EnemyItem: React.FC<EnemyItemProps> = ({ enemy }) => {
   return (
-    <div className="enemy-item" style={styles.card}>
-      <Link to={`/enemies/${enemy.id}`} style={styles.link}>
-        <img
-          src={`${process.env.PUBLIC_URL}/images/${enemy.opponentImageSource}`}
-          alt={enemy.opponentName}
-          style={styles.image}
-        />
-        <h3 style={styles.name}>{enemy.opponentName}</h3>
+    <div className="bg-white border-[3px] border-[#f7570b] rounded-lg p-4 shadow-md m-2 hover:scale-105 transition-transform duration-200 hover:border-[9px] hover:border-[#c40806] hover:shadow-lg text-center max-w-[200px]">
+      <Link to={`/enemies/${enemy.id}`} className="text-inherit no-underline flex flex-col items-center">
+        <div className="w-full h-40">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/${enemy.opponentImageSource}`}
+            alt={enemy.opponentName}
+            className="w-full h-full object-cover rounded-md"
+          />
+        </div>
+        <h3 className="mt-2 text-lg font-bold break-words w-full text-ellipsis overflow-hidden leading-tight max-h-[3rem]">
+          {enemy.opponentName}
+        </h3>
       </Link>
     </div>
   );
-};
-
-const styles = {
-  card: {
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    padding: '16px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    margin: '8px',
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'inherit',
-  },
-  image: {
-    width: '100%',
-    height: 'auto',
-    borderRadius: '4px',
-  },
-  name: {
-    marginTop: '8px',
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-  },
 };
 
 export default EnemyItem;

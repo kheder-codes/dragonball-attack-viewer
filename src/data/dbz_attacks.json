@@ -33,7 +33,7 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -60,7 +60,7 @@
           "attackImageSource": "attacks/genkidama.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -79,7 +79,7 @@
           "attackImageSource": "attacks/ellenbogenschlag.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -94,7 +94,7 @@
       "opponentImageSource": "opponents/baata-und-jees.png",
       "attacks": [
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
        
@@ -110,7 +110,7 @@
       "opponentImageSource": "opponents/captain-ginyu.png",
       "attacks": [
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -153,7 +153,7 @@
           "attackImageSource": "attacks/wuetendes-kamehameha.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -180,7 +180,7 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -207,7 +207,7 @@
           "attackImageSource": "attacks/instant-transmission.gif"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -249,7 +249,7 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -276,7 +276,7 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -307,7 +307,7 @@
           "attackImageSource": "attacks/universe-genkidama.gif"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf",
+          "attackName": "Full Speed Kampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {

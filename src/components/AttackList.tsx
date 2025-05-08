@@ -2,7 +2,6 @@ import React from 'react';
 import AttackItem from './AttackItem';
 import { AttackInstance } from '../types/attackTypes';
 
-
 interface AttackListProps {
   attacks: AttackInstance[];
 }
@@ -13,22 +12,12 @@ const AttackList: React.FC<AttackListProps> = ({ attacks }) => {
   }
 
   return (
-    <div className="attack-list-container" style={styles.grid}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 justify-items-center">
       {attacks.map((attack, index) => (
         <AttackItem key={`${attack.attackId}-${index}`} attack={attack} />
-        
       ))}
     </div>
   );
-};
-
-const styles = {
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '16px',
-    padding: '16px',
-  },
 };
 
 export default AttackList;
