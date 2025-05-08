@@ -44,19 +44,19 @@
     },
     {
       "saga": "Saiyajin-Saga",
-      "opponentName": "Vegeta (Saiyajin-Saga)",
+      "opponentName": "Vegeta",
       "opponentImageSource": "opponents/vegeta.png",
       "attacks": [
         {
-          "attackName": "Kaioken (bis zu x4)",
+          "attackName": "Kaioken (Vierfach)",
           "attackImageSource": "attacks/4-kaioken.png"
         },
         {
-          "attackName": "Kamehameha (inkl. Kaioken Kamehameha)",
+          "attackName": "Kaioken Kamehameha",
           "attackImageSource": "attacks/kaioken-kamehameha.gif"
         },
         {
-          "attackName": "Genkidama (initiiert, nicht geworfen)",
+          "attackName": "Genkidama",
           "attackImageSource": "attacks/genkidama.png"
         },
         {
@@ -71,11 +71,11 @@
     },
     {
       "saga": "Freezer-Saga",
-      "opponentName": "Recoome",
+      "opponentName": "Recoom",
       "opponentImageSource": "opponents/recoome.png",
       "attacks": [
         {
-          "attackName": "Ellenbogenschlag (entscheidend)",
+          "attackName": "Solarplexus-Schlag",
           "attackImageSource": "attacks/ellenbogenschlag.png"
         },
         {
@@ -90,7 +90,7 @@
     },
     {
       "saga": "Freezer-Saga",
-      "opponentName": "Burter & Jeice",
+      "opponentName": "Baata & Jees",
       "opponentImageSource": "opponents/baata-und-jees.png",
       "attacks": [
         {
@@ -114,11 +114,11 @@
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
-          "attackName": "Kamehameha (zur Demonstration)",
+          "attackName": "Kamehameha",
           "attackImageSource": "attacks/kamehameha.png"
         },
          {
-          "attackName": "Kaioken (angedeutet/kurz genutzt)",
+          "attackName": "Kaioken",
           "attackImageSource": "attacks/kaioken.png"
         },
         {
@@ -137,11 +137,11 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
         {
-          "attackName": "Kaioken (bis zu x20)",
+          "attackName": "Kaioken (Zwanzigfach)",
           "attackImageSource": "attacks/20-kaioken.gif"
         },
         {
-          "attackName": "Genkidama (Groß)",
+          "attackName": "Genkidama",
           "attackImageSource": "attacks/big-genkidama.gif"
         },
         {
@@ -168,7 +168,7 @@
     },
     {
       "saga": "Cell-Saga",
-      "opponentName": "opponents/Android 19",
+      "opponentName": "Android 19",
       "opponentImageSource": "opponents/android-19.png",
       "attacks": [
         {
@@ -180,7 +180,7 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
         {
-          "attackName": "Hochgeschwindigkeitskampf (durch Herzkrankheit beeinträchtigt)",
+          "attackName": "Hochgeschwindigkeitskampf",
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
@@ -195,7 +195,7 @@
       "opponentImageSource": "opponents/cell-perfect.png",
       "attacks": [
         {
-          "attackName": "Super-Saiyajin full power",
+          "attackName": "Super-Saiyajin (Volle Kraft)",
           "attackImageSource": "attacks/cell-goku-ss.png"
         },
         {
@@ -203,7 +203,7 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
         {
-          "attackName": "Momentane Teleportation (Shunkanido)",
+          "attackName": "Momentane Teleportation",
           "attackImageSource": "attacks/instant-transmission.gif"
         },
         {
@@ -303,7 +303,7 @@
           "attackImageSource": "attacks/kamehameha.png"
         },
          {
-          "attackName": "Super Genkidama / Universum Genkidama",
+          "attackName": "Super Genkidama",
           "attackImageSource": "attacks/universe-genkidama.gif"
         },
         {
@@ -311,7 +311,7 @@
           "attackImageSource": "attacks/highspeed-battle.gif"
         },
         {
-          "attackName": "Momentane Teleportation (Shunkanido)",
+          "attackName": "Momentane Teleportation",
           "attackImageSource": "attacks/instant-transmission.gif"
         },
         {
