@@ -1,12 +1,11 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDataContext } from '../context/DataContext';
 import EnemyList from './EnemyList';
 
 const AttackDetail: React.FC = () => {
   const { attackId } = useParams<{ attackId: string }>();
   const data = useDataContext();
-  const navigate = useNavigate();
 
   // Handling für fehlende oder ungültige Attacken
   if (!attackId) {
