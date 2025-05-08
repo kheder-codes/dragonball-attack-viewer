@@ -38,10 +38,7 @@ const AttackDetail: React.FC = () => {
         <p>Diese Attacke wurde gegen keine Gegner verwendet.</p>
       )}
 
-      {/* Zurück-Navigation */}
-      <button onClick={() => navigate(-1)} style={styles.backButton}>
-        Back
-      </button>
+      
     </div>
   );
 };

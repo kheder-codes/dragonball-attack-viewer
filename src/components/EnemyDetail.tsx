@@ -19,6 +19,7 @@ const EnemyDetail: React.FC = () => {
   }
 
   return (
+    <>
     <div style={styles.container}>
       <h1>{enemy.opponentName}</h1>
       <img
@@ -34,8 +35,10 @@ const EnemyDetail: React.FC = () => {
       <AttackList attacks={enemy.attacksUsedAgainst} />
 
       {/* Zurück zur Liste */}
-      <Link to="/" style={styles.backLink}>Back to Enemy List</Link>
+     
     </div>
+    
+    </>
   );
 };
 

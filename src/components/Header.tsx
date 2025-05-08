@@ -1,12 +1,35 @@
 import React from 'react';
-import Search from './Search';
-import './Header.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
   return (
-    <header className="header-container">
-      <h1 className="header-title">Son Gokus Fights</h1>
-      <Search />
+    <header className="bg-[#black] text-white flex flex-col items-center justify-center py-8 relative ">
+      {/* Logo */}
+      <div className="mb-0">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/background/Dragon-Ball-Logo.png`}
+          alt="Dragon Ball Logo"
+          className="h-44 object-contain cursor-pointer hover:scale-110 transition-transform duration-200"
+          onClick={() => navigate('/')} // Navigiert zur Startseite
+
+        />
+      </div>
+      {/* Schriftzug */}
+      <h1 className="text-2xl font-bold text-center" style={{ textShadow: '2px 2px 0 black, -2px 2px 0 black, 2px -2px 0 black, -2px -2px 0 black' }}>
+        Son Gokus Kämpfe
+      </h1>
+      {/* Suchleiste */}
+      <div className="mt-4 w-full max-w-md">
+        <input
+          type="text"
+          placeholder="Suche..."
+          className="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#c40806]"
+        />
+        
+      </div>
+      
     </header>
   );
 };
