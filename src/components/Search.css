@@ -1,12 +1,12 @@
 .search-container {
     position: relative;
-    width: 300px;
+    width: 100%;
   }
   
   .search-input {
     width: 100%;
     padding: 8px 12px;
-    border: 1px solid #333;
+    border: 1px solid #9f9f9f;
     border-radius: 4px;
     background-color: #2a2a2a;
     color: #fff;

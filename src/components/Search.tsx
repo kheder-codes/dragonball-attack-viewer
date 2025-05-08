@@ -100,15 +100,15 @@ const Search: React.FC = () => {
             />
             <div className={`dropdown ${isDropdownVisible && results.length > 0 ? 'visible' : ''}`}>
                 {results.map((result) => (
-                    <div 
-                        key={`${result.type}-${result.id}`} 
+                    <div
+                        key={`${result.type}-${result.id}`}
                         className="search-item"
                         onClick={() => handleItemClick(result)}
                     >
-                        <img 
-                            className="item-image" 
-                            src={result.image} 
-                            alt={result.name} 
+                        <img
+                            className="item-image"
+                            src={`${process.env.PUBLIC_URL}/images/${result.image}`}
+                            alt={result.name}
                         />
                         <div className="item-info">
                             <span className="item-name">{result.name}</span>

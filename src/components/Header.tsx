@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Search from './Search';
 
 
 const Header: React.FC = () => {
@@ -22,12 +23,7 @@ const Header: React.FC = () => {
       </h1>
       {/* Suchleiste */}
       <div className="mt-4 w-full max-w-md">
-        <input
-          type="text"
-          placeholder="Suche..."
-          className="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#c40806]"
-        />
-        
+       <Search/>
       </div>
       
     </header>
