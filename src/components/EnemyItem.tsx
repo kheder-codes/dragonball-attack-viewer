@@ -8,7 +8,7 @@ interface EnemyItemProps {
 
 const EnemyItem: React.FC<EnemyItemProps> = ({ enemy }) => {
   return (
-    <div className="bg-white border-[3px] border-[#f7570b] rounded-lg p-4 shadow-md m-2 hover:scale-105 transition-transform duration-200 hover:border-[9px] hover:border-[#c40806] hover:shadow-lg text-center max-w-[200px]">
+    <div className="bg-white border-[3px] border-[#f7570b] rounded-lg p-4 shadow-md m-2 hover:scale-110 transition-transform duration-200 hover:shadow-lg text-center max-w-[200px]">
       <Link to={`/enemies/${enemy.id}`} className="text-inherit no-underline flex flex-col items-center">
         <div className="w-full h-40">
           <img

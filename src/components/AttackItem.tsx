@@ -8,7 +8,7 @@ interface AttackItemProps {
 
 const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
   return (
-    <li className="bg-white border-[3px] border-[#404853] rounded-lg p-4 shadow-md m-2 hover:scale-105 transition-transform duration-200 hover:border-[9px] hover:border-[#7b8fb2] hover:shadow-lg text-center list-none max-w-[200px]">
+    <li className="bg-white border-[3px] border-[#404853] rounded-lg p-4 shadow-md m-2 hover:scale-110 transition-transform duration-200 text-center list-none max-w-[200px]">
       <Link to={`/attacks/${attack.attackId}`} className="text-inherit no-underline flex flex-col items-center">
         <div className="w-full h-40">
           <img
