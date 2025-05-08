@@ -30,7 +30,7 @@ const AttackDetail: React.FC = () => {
       
 
       {/* Gegnerliste */}
-      <h2>Used Against:</h2>
+      <h2>Benutzt gegen:</h2>
       {attack.usedAgainstEnemies.length > 0 ? (
         <EnemyList enemyIds={attack.usedAgainstEnemies} />
       ) : (
