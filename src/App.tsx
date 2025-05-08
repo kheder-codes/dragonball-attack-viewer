@@ -14,21 +14,27 @@ import Header from './components/Header';
 function App() {
   return (
     <DataProvider>
-      <Header />
-  
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="App">
-              <h1>Dragon Ball Attack Viewer</h1>
-              <EnemyList />
-            </div>
-          }
-        />
-        <Route path="/enemies/:enemyId" element={<EnemyDetail />} />
-        <Route path="/attacks/:attackId" element={<AttackDetail />} />
-      </Routes>
+      <div className="min-h-screen min-w-screen bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/images/background/goku-dark-background.jpg)`,
+      }}>
+
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="App">
+                <h1></h1>
+                <div className="h-[66vh]"></div>
+                <EnemyList />
+              </div>
+            }
+          />
+          <Route path="/enemies/:enemyId" element={<EnemyDetail />} />
+          <Route path="/attacks/:attackId" element={<AttackDetail />} />
+        </Routes>
+        </div>
     </DataProvider>
   );
 }
