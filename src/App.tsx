@@ -25,7 +25,6 @@ function App() {
             path="/"
             element={
               <div className="App">
-                <h1></h1>
                 <div className="h-[66vh]"></div>
                 <EnemyList />
               </div>
