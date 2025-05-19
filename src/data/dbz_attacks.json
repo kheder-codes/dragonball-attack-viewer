@@ -4,18 +4,25 @@
       "saga": "Saiyajin-Saga",
       "opponentName": "Radditz",
       "opponentImageSource": "opponents/radditz.png",
+      "info": "Radditz landet auf der Erde und offenbart, dass er Gokus Bruder ist. Er entführt Son Gohan, um Goku zu zwingen, mit ihm zu kämpfen. Der brutale Kampf endet, als Goku sich selbst opfert, um Radditz mit Piccolos Höllenspirale gemeinsam zu töten.",
       "attacks": [
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         },
         {
           "attackName": "Klammergriff (Full-Nelson)",
-          "attackImageSource": "attacks/klammergriff-full-nelson.png"
+          "attackImageSource": "attacks/klammergriff-full-nelson.png",
+          "info": "Ein physischer Angriff, bei dem der Gegner von hinten umklammert wird, um ihn zu fixieren. Radditz setzt diesen Griff gegen Goku ein, um ihn zu kontrollieren. Eine einfache, aber effektive Technik.",
+          "powerLevel": 2
         }
       ]
     },
@@ -23,22 +30,31 @@
       "saga": "Saiyajin-Saga",
       "opponentName": "Nappa",
       "opponentImageSource": "opponents/nappa.png",
+      "info": "Nappa landet mit Radditz’ Tod im Nacken auf der Erde und verwüstet die Z-Krieger gnadenlos. Piccolo stirbt, Goku kommt gerade noch rechtzeitig. Mit überwältigender Kraft bricht er Nappas Willen – Vegeta tötet ihn kaltblütig.",
       "attacks": [
         {
           "attackName": "Kaioken",
-          "attackImageSource": "attacks/kaioken.png"
+          "attackImageSource": "attacks/kaioken.png",
+          "info": "Eine Technik, die Goku von König Kai erlernt. Sie erhöht seine Kraft und Geschwindigkeit, birgt aber das Risiko körperlicher Schäden. Gegen Nappa setzt Goku sie erstmals ein.",
+          "powerLevel": 3
         },
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -46,26 +62,13 @@
       "saga": "Saiyajin-Saga",
       "opponentName": "Vegeta",
       "opponentImageSource": "opponents/vegeta.png",
+      "info": "Vegeta trifft als arrogantes Elite-Wesen auf Goku. Ihr Duell sprengt jede Grenze. Goku nutzt die neu erlernte Kaioken, verliert aber fast. Mit vereinten Kräften zwingen die Z-Krieger ihn zum Rückzug. Er entkommt – doch seine Rivalität mit Goku hat erst begonnen.",
       "attacks": [
         {
           "attackName": "Kaioken (Vierfach)",
-          "attackImageSource": "attacks/4-kaioken.png"
-        },
-        {
-          "attackName": "Kaioken Kamehameha",
-          "attackImageSource": "attacks/kaioken-kamehameha.gif"
-        },
-        {
-          "attackName": "Genkidama",
-          "attackImageSource": "attacks/genkidama.png"
-        },
-        {
-          "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
-        },
-        {
-          "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/4-kaioken.png",
+          "info": "Eine verstärkte Version der Kaioken-Technik, die Gokus Kraft und Geschwindigkeit um das Vierfache erhöht. Gegen Vegeta setzt Goku sie ein, um mitzuhalten. Ein riskantes Manöver!",
+          "powerLevel": 5
         }
       ]
     },
@@ -73,18 +76,25 @@
       "saga": "Freezer-Saga",
       "opponentName": "Recoom",
       "opponentImageSource": "opponents/recoome.png",
+      "info": "Recoom, Muskelberg der Ginyu-Force, spielt mit Vegeta, Krillin und Gohan. Erst Gokus Ankunft beendet die Tortur. Mit einem einzigen Schlag setzt er Recoom außer Gefecht – ein Schockmoment für Freezers Elitetrupp und Beweis für Gokus neue Stärke.",
       "attacks": [
         {
           "attackName": "Solarplexus-Schlag",
-          "attackImageSource": "attacks/ellenbogenschlag.png"
+          "attackImageSource": "attacks/ellenbogenschlag.png",
+          "info": "Ein einfacher, aber effektiver Schlag in den Solarplexus. Goku setzt ihn ein, um Recoom zu überraschen. Eine schnelle und schmerzhafte Technik.",
+          "powerLevel": 3
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -92,15 +102,19 @@
       "saga": "Freezer-Saga",
       "opponentName": "Baata & Jees",
       "opponentImageSource": "opponents/baata-und-jees.png",
+      "info": "Als Teil der Ginyu-Force stellen sich Baata & Jees Goku auf Namek in den Weg. Sie unterschätzen seine neue Stärke. In einem überwältigend schnellen Kampf besiegt Goku die beiden mit Leichtigkeit – ein klarer Beweis seines Saiyajin-Potenzials.",
       "attacks": [
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
-       
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -108,22 +122,31 @@
       "saga": "Freezer-Saga",
       "opponentName": "Captain Ginyu",
       "opponentImageSource": "opponents/captain-ginyu.png",
+      "info": "Captain Ginyu wechselt in einem cleveren Manöver den Körper mit Goku. Doch Ginyus Kräfte harmonieren nicht mit dem neuen Körper. Nach einem weiteren Tausch landet er im Körper eines Frosches – sein Schicksal ist damit auf ewig besiegelt.",
       "attacks": [
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
-         {
+        {
           "attackName": "Kaioken",
-          "attackImageSource": "attacks/kaioken.png"
+          "attackImageSource": "attacks/kaioken.png",
+          "info": "Eine Technik, die Goku von König Kai erlernt. Sie erhöht seine Kraft und Geschwindigkeit, birgt aber das Risiko körperlicher Schäden. Gegen Nappa setzt Goku sie erstmals ein.",
+          "powerLevel": 3
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -131,38 +154,55 @@
       "saga": "Freezer-Saga",
       "opponentName": "Freezer",
       "opponentImageSource": "opponents/freezer.png",
+      "info": "Freezer tötet Krillin auf Namek, was Goku zur Verwandlung in einen legendären Super Saiyajin treibt. Der darauffolgende Kampf ist epochal. Trotz Freezers letzter Attacke verschont Goku ihn – doch Trunks erledigt ihn später ohne Zögern.",
       "attacks": [
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
         {
           "attackName": "Kaioken (Zwanzigfach)",
-          "attackImageSource": "attacks/20-kaioken.gif"
+          "attackImageSource": "attacks/20-kaioken.gif",
+          "info": "Eine extrem verstärkte Version der Kaioken-Technik, die Gokus Kraft und Geschwindigkeit um das Zwanzigfache erhöht. Gegen Freezer setzt Goku sie ein, um mitzuhalten. Ein riskantes Manöver!",
+          "powerLevel": 6
         },
         {
           "attackName": "Genkidama",
-          "attackImageSource": "attacks/big-genkidama.gif"
+          "attackImageSource": "attacks/big-genkidama.gif",
+          "info": "Eine Technik, bei der Goku die Energie aller Lebewesen sammelt, um einen riesigen Energieball zu erschaffen. Gegen Freezer ist sie die letzte Hoffnung. Ein Symbol für die Macht der Freundschaft!",
+          "powerLevel": 7
         },
         {
           "attackName": "Super-Saiyajin Transformation",
-          "attackImageSource": "attacks/super-saiyan.gif"
+          "attackImageSource": "attacks/super-saiyan.gif",
+          "info": "Eine legendäre Transformation, die Goku im Kampf gegen Freezer erreicht. Sie erhöht seine Kraft und Geschwindigkeit enorm. Ein Wendepunkt im Kampf gegen das Böse!",
+          "powerLevel": 6
         },
         {
           "attackName": "Wütendes Kamehameha",
-          "attackImageSource": "attacks/wuetendes-kamehameha.png"
+          "attackImageSource": "attacks/wuetendes-kamehameha.png",
+          "info": "Eine verstärkte Version des Kamehameha, die Goku in seiner Super-Saiyajin-Form einsetzt. Voller Wut und Entschlossenheit! Ein verheerender Angriff gegen Freezer.",
+          "powerLevel": 6
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Ki-Stöße",
-          "attackImageSource": "attacks/ki-blast.gif"
+          "attackImageSource": "attacks/ki-blast.gif",
+          "info": "Kleine Energiestöße, die aus der Hand abgefeuert werden. Goku setzt sie oft ein, um seine Gegner zu distanzieren oder zu verletzen. Eine grundlegende Technik im Repertoire eines jeden Kampfkünstlers.",
+          "powerLevel": 3
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -170,22 +210,31 @@
       "saga": "Cell-Saga",
       "opponentName": "Android 19",
       "opponentImageSource": "opponents/android-19.png",
+      "info": "Android 19 absorbiert Energie und stellt sich Goku entgegen. Doch Gokus Herzvirus schwächt ihn stark. Vegeta erscheint, verwandelt sich erstmals in einen Super-Saiyajin und vernichtet 19 gnadenlos – eiskalt und mit purer Saiyajin-Wut.",
       "attacks": [
         {
           "attackName": "Super-Saiyajin Transformation",
-          "attackImageSource": "attacks/super-saiyan.gif"
+          "attackImageSource": "attacks/super-saiyan.gif",
+          "info": "Eine legendäre Transformation, die Goku im Kampf gegen Freezer erreicht. Sie erhöht seine Kraft und Geschwindigkeit enorm. Ein Wendepunkt im Kampf gegen das Böse!",
+          "powerLevel": 6
         },
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -193,30 +242,43 @@
       "saga": "Cell-Saga",
       "opponentName": "Cell (Perfekte Form)",
       "opponentImageSource": "opponents/cell-perfect.png",
+      "info": "Cell erreicht seine perfekte Form durch die Absorption von C-17 und C-18. Bei den 'Cell-Spielen' bringt er die Z-Krieger an ihre Grenzen. Erst als Gohan wutentbrannt seine wahre Kraft entfesselt, gelingt es, Cell mit einem ultimativen Kamehameha zu besiegen.",
       "attacks": [
         {
           "attackName": "Super-Saiyajin (Volle Kraft)",
-          "attackImageSource": "attacks/cell-goku-ss.png"
+          "attackImageSource": "attacks/cell-goku-ss.png",
+          "info": "Gokus Super-Saiyajin-Form mit voller Kraft. Er setzt sie gegen Cell ein, um seine Stärke zu demonstrieren. Ein Zeichen für sein unermüdliches Training!",
+          "powerLevel": 7
         },
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
         {
           "attackName": "Momentane Teleportation",
-          "attackImageSource": "attacks/instant-transmission.gif"
+          "attackImageSource": "attacks/instant-transmission.gif",
+          "info": "Eine Technik, die es dem Anwender ermöglicht, sich augenblicklich zu einem anderen Ort zu teleportieren. Goku erlernt sie auf dem Planeten Yardrat. Eine nützliche Fähigkeit für schnelle Angriffe und Flucht.",
+          "powerLevel": 7
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Ki-Stöße",
-          "attackImageSource": "attacks/ki-blast.gif"
+          "attackImageSource": "attacks/ki-blast.gif",
+          "info": "Kleine Energiestöße, die aus der Hand abgefeuert werden. Goku setzt sie oft ein, um seine Gegner zu distanzieren oder zu verletzen. Eine grundlegende Technik im Repertoire eines jeden Kampfkünstlers.",
+          "powerLevel": 3
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -224,14 +286,19 @@
       "saga": "Buu-Saga",
       "opponentName": "Yakon",
       "opponentImageSource": "opponents/yakon.png",
+      "info": "Yakon, ein Ungeheuer aus der Dunkelwelt, frisst Licht und will Gokus Super-Saiyajin-Energie aufsaugen. Goku nutzt das zu seinem Vorteil, gibt ihm zu viel Energie – bis Yakon regelrecht explodiert. Babidi bleibt fassungslos zurück.",
       "attacks": [
         {
           "attackName": "Super-Saiyajin Transformation",
-          "attackImageSource": "attacks/super-saiyan.gif"
+          "attackImageSource": "attacks/super-saiyan.gif",
+          "info": "Eine legendäre Transformation, die Goku im Kampf gegen Freezer erreicht. Sie erhöht seine Kraft und Geschwindigkeit enorm. Ein Wendepunkt im Kampf gegen das Böse!",
+          "powerLevel": 6
         },
         {
           "attackName": "Ki-Ausbruch (Flare)",
-          "attackImageSource": "attacks/ki-ausbruch.png"
+          "attackImageSource": "attacks/ki-ausbruch.png",
+          "info": "Eine Technik, bei der der Anwender seine Ki freisetzt, um eine Lichtexplosion zu erzeugen. Goku setzt sie ein, um Yakon zu blenden. Ein cleverer Schachzug!",
+          "powerLevel": 4
         }
       ]
     },
@@ -239,26 +306,37 @@
       "saga": "Buu-Saga",
       "opponentName": "Majin Vegeta",
       "opponentImageSource": "opponents/majin-vegeta.png",
+      "info": "Von Babidis dunkler Magie manipuliert, sucht Majin Vegeta den ultimativen Showdown gegen Goku. Es kommt zum epischen Duell zweier Saiyajins. Am Ende opfert sich Vegeta heldenhaft in einer Explosion – um seine Familie zu retten. Doch Buu lebt weiter.",
       "attacks": [
         {
           "attackName": "Super-Saiyajin 2 Transformation",
-          "attackImageSource": "attacks/ss2.gif"
+          "attackImageSource": "attacks/ss2.gif",
+          "info": "Eine noch stärkere Transformation als der Super-Saiyajin. Vegeta erreicht sie unter Babidis Kontrolle. Ein Zeichen für seine dunkle Entschlossenheit!",
+          "powerLevel": 8
         },
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Ki-Stöße",
-          "attackImageSource": "attacks/ki-blast.gif"
+          "attackImageSource": "attacks/ki-blast.gif",
+          "info": "Kleine Energiestöße, die aus der Hand abgefeuert werden. Goku setzt sie oft ein, um seine Gegner zu distanzieren oder zu verletzen. Eine grundlegende Technik im Repertoire eines jeden Kampfkünstlers.",
+          "powerLevel": 3
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -266,26 +344,37 @@
       "saga": "Buu-Saga",
       "opponentName": "Majin Buu (Fett)",
       "opponentImageSource": "opponents/majin-buu.png",
+      "info": "Majin Buu erscheint kindlich, doch seine Macht ist zerstörerisch. Weder Gotenks noch Gohan können ihn dauerhaft stoppen. Erst Goku, mit Hilfe der vereinten Energie der Erde, gelingt es mithilfe der Genkidama, Buu endgültig auszulöschen.",
       "attacks": [
         {
           "attackName": "Super-Saiyajin 3 Transformation",
-          "attackImageSource": "attacks/super-saiyajin-3-transformation.png"
+          "attackImageSource": "attacks/super-saiyajin-3-transformation.png",
+          "info": "Eine noch stärkere Transformation als der Super-Saiyajin 2. Goku erreicht sie im Kampf gegen Kid Buu, aber sie zehrt stark an seiner Energie. Ein riskantes Manöver!",
+          "powerLevel": 10
         },
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Ki-Stöße",
-          "attackImageSource": "attacks/ki-blast.gif"
+          "attackImageSource": "attacks/ki-blast.gif",
+          "info": "Kleine Energiestöße, die aus der Hand abgefeuert werden. Goku setzt sie oft ein, um seine Gegner zu distanzieren oder zu verletzen. Eine grundlegende Technik im Repertoire eines jeden Kampfkünstlers.",
+          "powerLevel": 3
         },
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },
@@ -293,35 +382,49 @@
       "saga": "Buu-Saga",
       "opponentName": "Kid Buu",
       "opponentImageSource": "opponents/kid-buu.png",
+      "info": "Kid Buu ist pures Chaos – unberechenbar und zerstörerisch. Er vernichtet die Erde mühelos. Goku und Vegeta kämpfen bis zur Erschöpfung. Erst eine riesige Genkidama, gespeist aus der Kraft der ganzen Menschheit, beendet seinen Wahnsinn für immer.",
       "attacks": [
         {
           "attackName": "Super-Saiyajin 3 Transformation",
-          "attackImageSource": "attacks/super-saiyajin-3-transformation.png"
+          "attackImageSource": "attacks/super-saiyajin-3-transformation.png",
+          "info": "Eine noch stärkere Transformation als der Super-Saiyajin 2. Goku erreicht sie im Kampf gegen Kid Buu, aber sie zehrt stark an seiner Energie. Ein riskantes Manöver!",
+          "powerLevel": 10
         },
         {
           "attackName": "Kamehameha",
-          "attackImageSource": "attacks/kamehameha.png"
+          "attackImageSource": "attacks/kamehameha.png",
+          "info": "Gokus Signaturtechnik, ein Energiestoß, der durch das Sammeln und Freisetzen von Ki entsteht. Erstmals von Muten Roshi eingesetzt, perfektionierte Goku sie im Laufe seiner Kämpfe. Vielseitig und verheerend!",
+          "powerLevel": 5
         },
-         {
+        {
           "attackName": "Super Genkidama",
-          "attackImageSource": "attacks/universe-genkidama.gif"
+          "attackImageSource": "attacks/universe-genkidama.gif",
+          "info": "Eine Technik, bei der Goku die Energie aller Lebewesen sammelt, um einen riesigen Energieball zu erschaffen. Gegen Kid Buu ist sie die letzte Hoffnung. Ein Symbol für die Macht der Freundschaft!",
+          "powerLevel": 12
         },
         {
           "attackName": "Full Speed Kampf",
-          "attackImageSource": "attacks/highspeed-battle.gif"
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
         },
         {
           "attackName": "Momentane Teleportation",
-          "attackImageSource": "attacks/instant-transmission.gif"
+          "attackImageSource": "attacks/instant-transmission.gif",
+          "info": "Eine Technik, die es dem Anwender ermöglicht, sich augenblicklich zu einem anderen Ort zu teleportieren. Goku erlernt sie auf dem Planeten Yardrat. Eine nützliche Fähigkeit für schnelle Angriffe und Flucht.",
+          "powerLevel": 7
         },
         {
           "attackName": "Ki-Stöße",
-          "attackImageSource": "attacks/ki-blast.gif"
+          "attackImageSource": "attacks/ki-blast.gif",
+          "info": "Kleine Energiestöße, die aus der Hand abgefeuert werden. Goku setzt sie oft ein, um seine Gegner zu distanzieren oder zu verletzen. Eine grundlegende Technik im Repertoire eines jeden Kampfkünstlers.",
+          "powerLevel": 3
         },
-        
         {
           "attackName": "Flugfähigkeit",
-          "attackImageSource": "attacks/flugfaehigkeit.png"
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     }
