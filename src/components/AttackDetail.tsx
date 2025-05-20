@@ -9,60 +9,63 @@ const AttackDetail: React.FC = () => {
 
   // Handling für fehlende oder ungültige Attacken
   if (!attackId) {
-    return <div>Keine Attacke ausgewählt.</div>;
+    return <div className="text-white">Keine Attacke ausgewählt.</div>;
   }
 
   const attack = data.attacksMap.get(attackId);
 
   if (!attack) {
-    return <div>Attacke nicht gefunden: {attackId}</div>;
+    return <div className="text-white">Attacke nicht gefunden: {attackId}</div>;
+  };
+
+  // Funktion zum Generieren des Farbverlaufs basierend auf dem Power-Level
+  const getPowerLevelColor = (powerLevel: number | undefined): string => {
+    if (powerLevel === undefined) {
+      return 'text-gray-500'; // Standardfarbe, wenn kein Power-Level vorhanden ist
+    }
+
+    const hue = (powerLevel / 10) * 120; // Skaliere den Wert auf den Bereich 0-120 (Grün bis Rot)
+    const clampedHue = Math.max(0, Math.min(120, hue)); // Stelle sicher, dass der Wert innerhalb des gültigen Bereichs liegt
+    const color = `hsl(${clampedHue}, 100%, 50%)`; // Erzeuge die HSL-Farbe
+    return `text-[${color}]`; // Gib die Tailwind CSS-Klasse mit der HSL-Farbe zurück
   };
 
   return (
-    <div style={styles.container}>
-      <h1>{attack.attackName}</h1>
-      <img
-        src={`${process.env.PUBLIC_URL}/images/${attack.attackImageSource}`}
-        alt={attack.attackName}
-        style={styles.image}
-      />
-      <p><strong>ID:</strong> {attack.id}</p>
-      
+    <div className="p-4 flex flex-col items-center">
+      {/* Oberer Bereich: Bild + Daten nebeneinander */}
+      <div className="flex flex-row bg-black/60 rounded-xl shadow-lg p-8 gap-10 items-center mb-8">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/${attack.attackImageSource}`}
+          alt={attack.attackName}
+          className="w-[300px] h-auto rounded-lg border-4 border-white shadow-xl"
+        />
+        <div className="flex flex-col justify-center items-center min-w-[260px] text-center">
+          <h1 className="text-4xl font-extrabold mb-4 text-white drop-shadow-[0_2px_0_black]">
+            {attack.attackName}
+          </h1>
+          {attack.powerLevel !== undefined && (
+            <p className="text-2xl text-white drop-shadow-[0_2px_0_black] mb-2">
+              <span className="font-bold">Power-Level: </span> 
+              <span className={`font-bold ${getPowerLevelColor(attack.powerLevel)}`}> {attack.powerLevel}</span>
+            </p>
+          )}
+          <p className="text-lg text-white drop-shadow-[0_2px_0_black] mb-2">
+            <span className="font-bold">Informationen:</span> {attack.info ?? "Keine weiteren Informationen vorhanden."}
+          </p>
+        </div>
+      </div>
 
       {/* Gegnerliste */}
-      <h2>Benutzt gegen:</h2>
+      <h2 className="text-2xl font-bold text-white drop-shadow-[0_2px_0_black] mb-2">
+        Benutzt gegen:
+      </h2>
       {attack.usedAgainstEnemies.length > 0 ? (
         <EnemyList enemyIds={attack.usedAgainstEnemies} />
       ) : (
-        <p>Diese Attacke wurde gegen keine Gegner verwendet.</p>
+        <p className="text-white">Diese Attacke wurde gegen keine Gegner verwendet.</p>
       )}
-
-      
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: '16px',
-    
-  },
-  image: {
-    width: '300px',
-    height: 'auto',
-    borderRadius: '8px',
-    margin: '16px 0',
-  },
-  backButton: {
-    marginTop: '16px',
-    padding: '8px 16px',
-    fontSize: '1rem',
-    backgroundColor: '#007BFF',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
 };
 
 export default AttackDetail;

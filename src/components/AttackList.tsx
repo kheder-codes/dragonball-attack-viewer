@@ -14,7 +14,9 @@ const AttackList: React.FC<AttackListProps> = ({ attacks }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 justify-items-center">
       {attacks.map((attack, index) => (
-        <AttackItem key={`${attack.attackId}-${index}`} attack={attack} />
+        <div key={`${attack.attackId}-${index}`}>
+          <AttackItem key={`${attack.attackId}-${index}`} attack={attack} />
+        </div>
       ))}
     </div>
   );

@@ -2,15 +2,19 @@
 interface JsonAttack {
   attackName: string;
   attackImageSource: string;
+  info?: string;
+  powerLevel?: number; // Add this line
 }
 
 // Typ für ein einzelnes Kampf-Objekt innerhalb des 'gokuFightsDBZ'-Arrays in der JSON
 // Wir exportieren diesen Typ, damit wir ihn in anderen Dateien importieren können.
 export interface JsonFight {
   saga: string;
+  info: string;
   opponentName: string;
   opponentImageSource: string;
   attacks: JsonAttack[]; // Eine Liste von Attacken (vom Typ JsonAttack)
+  powerLevel?: number; // Add this line
 }
 
 export interface GokuFightsData {
@@ -27,19 +31,6 @@ export interface AttackInstance {
 }
 
 /**
- * Represents an Enemy encountered by Goku.
- * Contains details about the enemy and a list of specific attack instances used against them.
- * The 'id' is crucial for routing.
- */
-export interface EnemyData {
-  id: string; // Unique, URL-friendly ID for the enemy (e.g., 'radditz', 'majin-vegeta')
-  opponentName: string;
-  opponentImageSource: string;
-  saga: string;
-  attacksUsedAgainst: AttackInstance[]; // List of specific attacks used in this encounter
-}
-
-/**
  * Represents a unique *type* of Attack (e.g., "Kamehameha" as a concept).
  * Contains details about the attack type and a list of all enemies it was used against.
  * The 'id' is crucial for routing.
@@ -49,6 +40,23 @@ export interface AttackData {
   attackName: string; // The canonical name for the attack type
   attackImageSource: string; // Representative image for the attack type
   usedAgainstEnemies: string[]; // Array of unique enemy IDs this attack was used against
+  info?: string;
+  powerLevel?: number; // Add this line
+}
+
+/**
+ * Represents an Enemy encountered by Goku.
+ * Contains details about the enemy and a list of specific attack instances used against them.
+ * The 'id' is crucial for routing.
+ */
+export interface EnemyData {
+  id: string; // Unique, URL-friendly ID for the enemy (e.g., 'radditz', 'majin-vegeta')
+  opponentName: string;
+  opponentImageSource: string;
+  saga: string;
+  info?: string; // Add this line
+  attacksUsedAgainst: AttackInstance[]; // List of specific attacks used in this encounter
+  
 }
 
 /**
