@@ -18,32 +18,47 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Berechne die Deckkraft des Overlays basierend auf der Scroll-Position
-  const overlayOpacity = Math.min(scrollY / 500, 0.7); // Maximal 70% Dunkelheit
+  const overlayOpacity = Math.min(scrollY / 500, 0.7);
+
+
+  const imageUrl = `${process.env.PUBLIC_URL}/images/background/goku-dark-background.jpg`;
+
+
+
+
 
   return (
     <DataProvider>
-      <div className="relative min-h-screen min-w-screen bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/background/goku-dark-background.jpg)`,
-        }}
-      >
-        {/* Dynamisches Overlay */}
+      <div className="relative min-h-screen w-full">
+
         <div
-          className="absolute top-0 left-0 w-full h-full bg-black pointer-events-none transition-opacity duration-200"
-          style={{ opacity: overlayOpacity }}
+          className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+            zIndex: -1,
+          }}
         ></div>
 
-        {/* Inhalt */}
-        <div className="relative z-10">
+
+        <div
+          className="absolute inset-0 w-full h-full bg-black pointer-events-none transition-opacity duration-200"
+          style={{ opacity: overlayOpacity, zIndex: 1 }} // 
+        ></div>
+
+
+        <div className="relative h-full overflow-y-auto" style={{ zIndex: 2 }}>
           <Header />
           <Routes>
             <Route
               path="/"
               element={
+
                 <div className="App">
+
                   <div className="h-[66vh]"></div>
-                  <EnemyList />
+                  <div className="p-4">
+                    <EnemyList />
+                  </div>
                 </div>
               }
             />
