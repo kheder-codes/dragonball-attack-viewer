@@ -56,7 +56,7 @@ export interface EnemyData {
   saga: string;
   info?: string; // Add this line
   attacksUsedAgainst: AttackInstance[]; // List of specific attacks used in this encounter
-  // powerLevel?: number; // Remove this line
+  
 }
 
 /**

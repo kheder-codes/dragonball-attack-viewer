@@ -69,6 +69,30 @@
           "attackImageSource": "attacks/4-kaioken.png",
           "info": "Eine verstärkte Version der Kaioken-Technik, die Gokus Kraft und Geschwindigkeit um das Vierfache erhöht. Gegen Vegeta setzt Goku sie ein, um mitzuhalten. Ein riskantes Manöver!",
           "powerLevel": 5
+        },
+        {
+          "attackName": "Kaioken Kamehameha",
+          "attackImageSource": "attacks/kaioken-kamehameha.gif",
+          "info": "Eine Kombination aus Kaioken und Kamehameha, die Goku gegen Vegeta einsetzt. Sie vereint die Kraftsteigerung der Kaioken mit der Energie des Kamehameha zu einem mächtigen Angriff.",
+          "powerLevel": 6
+        },
+        {
+          "attackName": "Genkidama",
+          "attackImageSource": "attacks/genkidama.png",
+          "info": "Eine Technik, bei der Goku die Energie aller Lebewesen sammelt, um einen riesigen Energieball zu erschaffen. Gegen Vegeta ist sie die letzte Hoffnung. Ein Symbol für die Macht der Freundschaft!",
+          "powerLevel": 7
+        },
+        {
+          "attackName": "Full Speed Kampf",
+          "attackImageSource": "attacks/highspeed-battle.gif",
+          "info": "Ein Kampfstil, der auf extremer Geschwindigkeit basiert. Die Kämpfer bewegen sich so schnell, dass sie kaum sichtbar sind. Goku perfektioniert diese Technik im Laufe seiner Ausbildung.",
+          "powerLevel": 4
+        },
+        {
+          "attackName": "Flugfähigkeit",
+          "attackImageSource": "attacks/flugfaehigkeit.png",
+          "info": "Die Fähigkeit, Ki zu nutzen, um frei durch die Lüfte zu gleiten. Ermöglicht es dem Anwender, Hindernisse zu überwinden und sich schnell fortzubewegen. Eine grundlegende Fähigkeit für viele Z-Krieger.",
+          "powerLevel": 1
         }
       ]
     },

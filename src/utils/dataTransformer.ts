@@ -1,76 +1,85 @@
 // src/utils/dataTransformer.ts
-import { GokuFightsData, TransformedData, EnemyData, AttackData, AttackInstance } from '../types/attackTypes';
+
+import {
+  GokuFightsData,
+  EnemyData,
+  AttackData,
+  AttackInstance,
+  TransformedData,
+  JsonFight,
+} from '../types/attackTypes';
+import { slugify } from './slugify';
 
 export const transformFightData = (rawData: GokuFightsData): TransformedData => {
-  const enemiesMap: Map<string, EnemyData> = new Map();
-  const attacksMap: Map<string, AttackData> = new Map();
+  const enemiesArray: EnemyData[] = [];
+  const enemiesMap = new Map<string, EnemyData>();
+  const attacksMap = new Map<string, AttackData>();
 
-  rawData.gokuFightsDBZ.forEach((fight) => {
-    const enemyId = fight.opponentName.toLowerCase().replace(/ /g, '-'); // URL-freundliche ID
-    const enemyName = fight.opponentName;
-    const enemyImage = fight.opponentImageSource;
-    const saga = fight.saga;
-    const info = fight.info;
-    // const powerLevel = fight.powerLevel; // Remove this line
+  if (!rawData || !Array.isArray(rawData.gokuFightsDBZ)) {
+    return { enemiesArray: [], enemiesMap: new Map(), attacksMap: new Map() };
+  }
 
-    // Verarbeite die Angriffe für diesen Gegner
-    const attacksUsedAgainst: AttackInstance[] = [];
-
-    fight.attacks?.forEach((attack) => {
-      const attackId = attack.attackName.toLowerCase().replace(/ /g, '-'); // URL-freundliche ID
-      const attackInstanceName = attack.attackName;
-      const attackInstanceImage = attack.attackImageSource;
-      const attackPowerLevel = attack.powerLevel; // Add this line
-
-      attacksUsedAgainst.push({
-        attackId: attackId,
-        attackName: attackInstanceName,
-        attackImageSource: attackInstanceImage,
-      });
-
-      // Stelle sicher, dass die Attacke in der Map existiert
-      if (attacksMap.has(attackId)) {
-        const existingAttack = attacksMap.get(attackId);
-        if (existingAttack && !existingAttack.usedAgainstEnemies.includes(enemyId)) {
-          existingAttack.usedAgainstEnemies.push(enemyId);
-        }
-      } else {
-        // This is the first time encountering this attack *type*
-        const newAttackData: AttackData = {
-          id: attackId,
-          attackName: attackInstanceName, // Use this instance's name as the canonical name
-          attackImageSource: attackInstanceImage, // Use this instance's image as representative
-          usedAgainstEnemies: [enemyId], // Start the list with the current enemy
-          info: attack.info,
-          powerLevel: attackPowerLevel, // Add this line
-        };
-        attacksMap.set(attackId, newAttackData); // Add the new attack type to the map
-      }
-    }); // End of fight.attacks.forEach
-
-    // Erstelle oder aktualisiere den Gegner-Eintrag
-    if (enemiesMap.has(enemyId)) {
-      const existingEnemy = enemiesMap.get(enemyId);
-      if (existingEnemy) {
-        existingEnemy.attacksUsedAgainst = existingEnemy.attacksUsedAgainst.concat(attacksUsedAgainst);
-      }
-    } else {
-      const newEnemy: EnemyData = {
-        id: enemyId,
-        opponentName: enemyName,
-        opponentImageSource: enemyImage,
-        saga: saga,
-        info: info,
-        attacksUsedAgainst: attacksUsedAgainst,
-        // powerLevel: powerLevel, // Remove this line
-      };
-      enemiesMap.set(enemyId, newEnemy);
+  rawData.gokuFightsDBZ.forEach((fight: JsonFight, fightIndex: number) => {
+    if (!fight.opponentName) {
+      return;
     }
-  }); // End of rawData.gokuFightsDBZ.forEach
+
+    const enemyId = slugify(fight.opponentName);
+
+    const currentEnemyAttacks: AttackInstance[] = [];
+
+    const enemyData: EnemyData = {
+      id: enemyId,
+      opponentName: fight.opponentName,
+      opponentImageSource: fight.opponentImageSource || '',
+      saga: fight.saga || 'Unknown Saga',
+      attacksUsedAgainst: currentEnemyAttacks,
+      info: fight.info, // <-- info zuweisen
+      // powerLevel: fight.powerLevel, // falls EnemyData powerLevel bekommt, hier zuweisen
+    };
+
+    if (fight.attacks && Array.isArray(fight.attacks)) {
+      fight.attacks.forEach((attack, attackIndex) => {
+        if (!attack.attackName) {
+          return;
+        }
+
+        const attackId = slugify(attack.attackName);
+        const attackInstanceName = attack.attackName;
+        const attackInstanceImage = attack.attackImageSource || '';
+
+        currentEnemyAttacks.push({
+          attackId: attackId,
+          attackName: attackInstanceName,
+          attackImageSource: attackInstanceImage,
+        });
+
+        if (attacksMap.has(attackId)) {
+          const existingAttack = attacksMap.get(attackId)!;
+          if (!existingAttack.usedAgainstEnemies.includes(enemyId)) {
+            existingAttack.usedAgainstEnemies.push(enemyId);
+          }
+        } else {
+          const newAttackData: AttackData = {
+            id: attackId,
+            attackName: attackInstanceName,
+            attackImageSource: attackInstanceImage,
+            usedAgainstEnemies: [enemyId],
+            info: attack.info, // <-- info zuweisen
+            powerLevel: attack.powerLevel, // <-- powerLevel zuweisen
+          };
+          attacksMap.set(attackId, newAttackData);
+        }
+      });
+    }
+
+    enemiesArray.push(enemyData);
+    enemiesMap.set(enemyId, enemyData);
+  });
 
   return {
-    enemiesArray: Array.from(enemiesMap.values()),
-    enemiesMap: enemiesMap,
-    attacksMap: attacksMap,
+    enemiesArray,
+    enemiesMap,
+    attacksMap,
   };
 };
