@@ -22,8 +22,8 @@ const Header: React.FC = () => {
         Son Gokus Kämpfe
       </h1>
       {/* Suchleiste */}
-      <div className="mt-4 w-full max-w-md">
-       <Search/>
+      <div className="mt-4 w-full px-5 max-w-md mx-auto">
+       <Search />
       </div>
       
     </header>
@@ -31,3 +31,19 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
+
+
+
+{/* <input
+        // ...existing props...
+        className="
+          // ...existing classes...
+          w-full max-w-md mx-auto
+          px-5
+          text-center
+          // ...weitere Tailwind-Klassen...
+        "
+        // ...existing props...
+        placeholder="Suche nach Gegnern oder Attacken..."
+      /> */}

@@ -33,7 +33,7 @@ const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
       to-hellblau
       rounded-lg
       p-4
-      shadow-md
+      shadow-[0_0_32px_0_rgba(0,0,0,0.80)]
       m-2
       hover:scale-110
       transition-transform

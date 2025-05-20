@@ -32,21 +32,26 @@ const AttackDetail: React.FC = () => {
 
   return (
     <div className="p-4 flex flex-col items-center">
-      {/* Oberer Bereich: Bild + Daten nebeneinander */}
-      <div className="flex flex-row bg-black/60 rounded-xl shadow-lg p-8 gap-10 items-center mb-8">
+      {/* Oberer Bereich: Bild + Daten nebeneinander oder untereinander je nach Screen */}
+      <div className="
+        flex flex-col md:flex-row
+        bg-black/60 rounded-xl shadow-lg p-8 gap-10 items-center mb-8
+        w-full max-w-md md:max-w-4xl
+        mx-auto
+      ">
         <img
           src={`${process.env.PUBLIC_URL}/images/${attack.attackImageSource}`}
           alt={attack.attackName}
-          className="w-[300px] h-auto rounded-lg border-4 border-white shadow-xl"
+          className="w-[220px] md:w-[300px] h-auto rounded-lg border-4 border-white shadow-xl mb-4 md:mb-0"
         />
-        <div className="flex flex-col justify-center items-center min-w-[260px] text-center">
-          <h1 className="text-4xl font-extrabold mb-4 text-white drop-shadow-[0_2px_0_black]">
+        <div className="flex flex-col justify-center items-center min-w-[0] w-full text-center">
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-white drop-shadow-[0_2px_0_black]">
             {attack.attackName}
           </h1>
           {attack.powerLevel !== undefined && (
             <p className="text-2xl text-white drop-shadow-[0_2px_0_black] mb-2">
               <span className="font-bold">Power-Level: </span> 
-              <span className={`font-bold ${getPowerLevelColor(attack.powerLevel)}`}> {attack.powerLevel}</span>
+              <span className="font-bold" style={{ color: getPowerLevelColor(attack.powerLevel) }}> {attack.powerLevel}</span>
             </p>
           )}
           <p className="text-lg text-white drop-shadow-[0_2px_0_black] mb-2">
@@ -54,7 +59,6 @@ const AttackDetail: React.FC = () => {
           </p>
         </div>
       </div>
-
       {/* Gegnerliste */}
       <h2 className="text-2xl font-bold text-white drop-shadow-[0_2px_0_black] mb-2">
         Benutzt gegen:
