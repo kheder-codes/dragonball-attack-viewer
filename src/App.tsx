@@ -35,7 +35,6 @@ function App() {
 
     const triggerGoku = () => {
       
-      const minY = 0;
       const maxY = Math.max(window.innerHeight - 40, 0);
       setGokuY(Math.floor(Math.random() * maxY));
       setGokuKey(prev => prev + 1); 
