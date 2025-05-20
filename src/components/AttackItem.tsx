@@ -11,7 +11,6 @@ const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
   const data = useDataContext();
   const attackData = data.attacksMap.get(attack.attackId);
 
-
   const getPowerLevelColor = (powerLevel: number | undefined): string => {
     if (powerLevel === undefined) {
       return '#808080';
@@ -42,7 +41,7 @@ const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
       text-center
       list-none
       max-w-[200px]
-      h-[260px]
+      h-[280px]
       flex flex-col
       justify-between
     ">
@@ -57,14 +56,14 @@ const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
         <h3 className="mt-2 text-lg font-bold break-words w-full text-ellipsis overflow-hidden leading-tight max-h-[3rem]">
           {attack.attackName}
         </h3>
-        {attackData.powerLevel !== undefined && (
-          <p className="font-bold text-black">
-            Power Level: <span style={{ color: getPowerLevelColor(attackData.powerLevel) }}>
-              {attackData.powerLevel}
-            </span>
-          </p>
-        )}
       </Link>
+      {attackData.powerLevel !== undefined && (
+        <p className="font-bold text-black mt-auto"> {/* mt-auto can help ensure it's at the bottom if Link content is short */}
+          Power Level: <span style={{ color: getPowerLevelColor(attackData.powerLevel) }}>
+            {attackData.powerLevel}
+          </span>
+        </p>
+      )}
     </li>
   );
 };
