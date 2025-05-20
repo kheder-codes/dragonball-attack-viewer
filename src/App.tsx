@@ -10,6 +10,9 @@ import Footer from './components/Footer';
 function App() {
   const [scrollY, setScrollY] = useState(0);
   const [arrowManuallyHidden, setArrowManuallyHidden] = useState(false);
+  const [gokuVisible, setGokuVisible] = useState(false);
+  const [gokuY, setGokuY] = useState(100);
+  const [gokuKey, setGokuKey] = useState(0);
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,6 +27,35 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [arrowManuallyHidden]);
+
+  
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    let animationTimeout: NodeJS.Timeout;
+
+    const triggerGoku = () => {
+      
+      const maxY = Math.max(window.innerHeight - 40, 0);
+      setGokuY(Math.floor(Math.random() * maxY));
+      setGokuKey(prev => prev + 1); 
+      setGokuVisible(true);
+
+      
+      animationTimeout = setTimeout(() => {
+        setGokuVisible(false);
+        
+        timeout = setTimeout(triggerGoku, 20000 + Math.random() * 40000);
+      }, 8000);
+    };
+
+    
+    timeout = setTimeout(triggerGoku, 20000 + Math.random() * 40000);
+
+    return () => {
+      clearTimeout(timeout);
+      clearTimeout(animationTimeout);
+    };
+  }, []);
 
   const overlayOpacity = Math.min(scrollY / 500, 0.7);
 
@@ -50,6 +82,33 @@ function App() {
   return (
     <DataProvider>
       <div className="relative min-h-screen w-full flex flex-col">
+        
+        {gokuVisible && (
+          <img
+            key={gokuKey}
+            src={`${process.env.PUBLIC_URL}/images/goku-cloud.png`}
+            alt="Goku auf Wolke"
+            style={{
+              position: 'absolute',
+              top: `${gokuY}px`,
+              left: '100vw',
+              height: '40px',
+              width: 'auto',
+              zIndex: 9999,
+              pointerEvents: 'none',
+              animation: 'goku-fly 8s linear forwards',
+            }}
+          />
+        )}
+        <style>
+          {`
+            @keyframes goku-fly {
+              from { left: 100vw; }
+              to { left: -120px; }
+            }
+          `}
+        </style>
+
 
         <div
           className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
