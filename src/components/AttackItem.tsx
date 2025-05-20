@@ -11,12 +11,12 @@ const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
   const data = useDataContext();
   const attackData = data.attacksMap.get(attack.attackId);
 
-  // Funktion zum Generieren des Farbverlaufs basierend auf dem Power-Level
+
   const getPowerLevelColor = (powerLevel: number | undefined): string => {
     if (powerLevel === undefined) {
-      return '#808080'; // Standardfarbe, wenn kein Power-Level vorhanden ist (Grau)
+      return '#808080';
     }
-    const hue = (powerLevel / 12) * 120; // Skaliere den Wert auf den Bereich 0-120 (Grün bis Rot)
+    const hue = (powerLevel / 12) * 120;
     const clampedHue = Math.max(0, Math.min(120, hue));
     const color = `hsl(${clampedHue}, 100%, 50%)`;
     return color;
@@ -33,7 +33,7 @@ const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
       to-hellblau
       rounded-lg
       p-4
-      shadow-md
+      shadow-[0_0_32px_0_rgba(0,0,0,0.80)]
       m-2
       hover:scale-110
       transition-transform
