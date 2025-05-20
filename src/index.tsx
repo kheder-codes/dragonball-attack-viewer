@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, useLocation } from 'react-router-dom';
+import { HashRouter, useLocation } from 'react-router-dom';
 
 
 function ScrollToTop() {
@@ -19,10 +19,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/dragonball-attack-viewer">
+    <HashRouter>
       <ScrollToTop />
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
