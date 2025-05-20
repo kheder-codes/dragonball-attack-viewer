@@ -33,12 +33,12 @@ const EnemyDetail: React.FC = () => {
       sagaColorClass = 'text-[#f7570b] font-bold';
       break;
     default:
-      sagaColorClass = 'text-white font-bold'; // Standardfarbe, falls keine Saga übereinstimmt
+      sagaColorClass = 'text-white font-bold';
   }
 
   return (
     <div className="p-4 flex flex-col items-center">
-      {/* Oberer Bereich: Bild + Daten nebeneinander oder untereinander je nach Screen */}
+
       <div className="
         flex flex-col md:flex-row
         bg-black/60 rounded-xl shadow-lg p-8 gap-10 items-center mb-8
@@ -62,7 +62,7 @@ const EnemyDetail: React.FC = () => {
           </p>
         </div>
       </div>
-      {/* AttackList bleibt wie gehabt */}
+
       <h2 className="text-2xl font-bold text-white drop-shadow-[0_2px_0_black] mb-2">
         Attacken gegen {enemy.opponentName}
       </h2>

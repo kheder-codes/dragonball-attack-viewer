@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      // Wenn der User wieder ganz nach oben scrollt (< 10px), Pfeil wieder anzeigen
+
       if (window.scrollY < 10 && arrowManuallyHidden) {
         setArrowManuallyHidden(false);
       }
@@ -27,21 +27,21 @@ function App() {
 
   const overlayOpacity = Math.min(scrollY / 500, 0.7);
 
-  // Pfeil ist sichtbar, wenn nicht manuell versteckt und wie gehabt abhängig vom Scroll
+
   const arrowOpacity =
     !arrowManuallyHidden && scrollY < 40
       ? 1
       : !arrowManuallyHidden
-      ? Math.max(0, 1 - (scrollY - 40) / 60)
-      : 0;
+        ? Math.max(0, 1 - (scrollY - 40) / 60)
+        : 0;
 
   const imageUrl = `${process.env.PUBLIC_URL}/images/background/goku-dark-background.jpg`;
 
-  // Scroll-Funktion für den Pfeil
+
   const handleArrowClick = () => {
     if (cardsRef.current) {
       const rect = cardsRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY + rect.top - 20; // 20px Abstand zum oberen Rand
+      const scrollTop = window.scrollY + rect.top - 20;
       window.scrollTo({ top: scrollTop, behavior: 'smooth' });
       setArrowManuallyHidden(true);
     }
@@ -74,7 +74,7 @@ function App() {
               element={
 
                 <div className="App relative">
-                  {/* Dragonball-Pfeil immer am unteren Bildschirmrand, zentriert */}
+
                   <style>
                     {`
                       @keyframes floatArrow {

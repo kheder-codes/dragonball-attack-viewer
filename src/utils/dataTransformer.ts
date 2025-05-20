@@ -1,5 +1,3 @@
-// src/utils/dataTransformer.ts
-
 import {
   GokuFightsData,
   EnemyData,
@@ -34,8 +32,7 @@ export const transformFightData = (rawData: GokuFightsData): TransformedData => 
       opponentImageSource: fight.opponentImageSource || '',
       saga: fight.saga || 'Unknown Saga',
       attacksUsedAgainst: currentEnemyAttacks,
-      info: fight.info, // <-- info zuweisen
-      // powerLevel: fight.powerLevel, // falls EnemyData powerLevel bekommt, hier zuweisen
+      info: fight.info,
     };
 
     if (fight.attacks && Array.isArray(fight.attacks)) {
@@ -65,8 +62,8 @@ export const transformFightData = (rawData: GokuFightsData): TransformedData => 
             attackName: attackInstanceName,
             attackImageSource: attackInstanceImage,
             usedAgainstEnemies: [enemyId],
-            info: attack.info, // <-- info zuweisen
-            powerLevel: attack.powerLevel, // <-- powerLevel zuweisen
+            info: attack.info, 
+            powerLevel: attack.powerLevel,
           };
           attacksMap.set(attackId, newAttackData);
         }
