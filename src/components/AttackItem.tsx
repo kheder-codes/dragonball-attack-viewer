@@ -42,6 +42,9 @@ const AttackItem: React.FC<AttackItemProps> = ({ attack }) => {
       text-center
       list-none
       max-w-[200px]
+      h-[260px]
+      flex flex-col
+      justify-between
     ">
       <Link to={`/attacks/${attack.attackId}`} className="text-inherit no-underline flex flex-col items-center">
         <div className="w-full h-40 relative">

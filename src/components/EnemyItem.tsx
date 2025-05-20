@@ -21,6 +21,9 @@ const EnemyItem: React.FC<EnemyItemProps> = ({ enemy }) => {
       duration-200
       text-center
       max-w-[200px]
+      h-[260px]
+      flex flex-col
+      justify-between
     ">
       <Link to={`/enemies/${enemy.id}`} className="text-inherit no-underline flex flex-col items-center">
         <div className="w-full h-40">
