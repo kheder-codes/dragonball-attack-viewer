@@ -7,6 +7,13 @@
   --hellblau: #7b8fb2;
 }
 
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  touch-action: manipulation;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
